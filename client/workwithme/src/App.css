@@ -17,5 +17,11 @@
   color: #61dafb;
 }
 
+.leaflet-container {
+  width: 90%;
+  height: 60vh;
+  display: inline-block;
+  border-radius: 10%;
+}
 
-
+#mapid { height: 180px; }
