@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
-import MapBubbles from "./MapBubbles"
 import NewBubbleForm from './NewBubbleForm';
+
+
 
 
 function NewBubble() {
@@ -9,10 +10,11 @@ function NewBubble() {
     const [postcode , setPostcode] = React.useState('');
     const [workstations , setWorkstations] = useState(0);
     const [wifi , setWifi] = React.useState("")
+   
 
     function handleChange(event) {
         // console.log('event: ', event)
-        console.log(event.target.value)
+        console.log(event.target.checked)
         switch (event.target.name) {
           case "name":
             setName(event.target.value);
@@ -35,12 +37,15 @@ function NewBubble() {
         event.preventDefault();
         console.log(
         `A request has been logged: 
-        From ${name} ${postcode} with ${workstations} spots and ${wifi}
+        From ${name} ${postcode} with ${workstations} spots and WIFI ${wifi}
         `)
         setName("");
         setPostcode("");
         setWorkstations("");
         setWifi("")
+        // the submission event would then add the new bubble to the backend tables 
+        // the map would then be returned with the new bubble on it
+        
       }
 
     return (

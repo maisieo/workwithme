@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomeView from './HomeView';
 import NewBubble from "./NewBubble"
 import JoinBubble from "./JoinBubble"
+import MapWithNewBubble from './MapWithNewBubble';
 
 
 
@@ -21,6 +22,10 @@ function Routes(props) {
             <Route exact path="/join-bubble">
             <JoinBubble />
             </Route>
+
+            {/* <Route exact path="/new-bubble-created">
+                <MapWithNewBubble />
+            </Route> */}
     
         </Switch>
     );
