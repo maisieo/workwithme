@@ -25,3 +25,5 @@
 }
 
 #mapid { height: 180px; }
+
+span::before { content: '\A'; white-space: pre; }
