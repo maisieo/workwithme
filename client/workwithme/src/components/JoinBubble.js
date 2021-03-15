@@ -1,12 +1,13 @@
 import React from 'react';
 import MapBubbles from "./MapBubbles"
-
+import MapBubbleForm from "./MapBubbleForm"
 
 function NewBubble() {
     return (
         <div className="NewBubble">
             Join an existing Bubble
-            <MapBubbles />
+            <MapBubbleForm onSubmit={(location) => getCoordinates(location)} coordinates={coordinates} />
+            <MapBubbles coordinates={coordinates}/>
         </div>
     );
 }

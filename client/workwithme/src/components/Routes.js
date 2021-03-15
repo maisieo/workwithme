@@ -20,7 +20,7 @@ function Routes(props) {
             </Route> 
 
             <Route exact path="/join-bubble">
-            <JoinBubble />
+            <JoinBubble/>
             </Route>
 
             {/* <Route exact path="/new-bubble-created">

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-function CityForm(props) {
+function MapBubbleForm(props) {
   //  define the initial use state of the form
   const [location, setLocation] = useState("");
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     // handle key presses
     setLocation(e.target.value);
     // e is the event that receives the event, which has a property of value
@@ -12,7 +12,7 @@ function CityForm(props) {
   };
 
   //defines what to do when a user submits. Sets location.
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     props.onSubmit(location);
     setLocation("");
@@ -20,7 +20,7 @@ function CityForm(props) {
   };
   return (
     //HTML for the form
-    <div className="CityForm">
+    <div className="MapBubbleForm">
       <form onSubmit={handleSubmit}>
         <label>
           Location &nbsp;
@@ -30,7 +30,6 @@ function CityForm(props) {
             name="location"
             value={location}
             onChange={handleChange}
-            placeholder="I live in..."
           />
         </label>
       </form>
@@ -38,4 +37,4 @@ function CityForm(props) {
   );
 }
 
-export default CityForm;
+export default MapBubbleForm;
