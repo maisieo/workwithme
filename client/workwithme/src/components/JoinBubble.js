@@ -3,7 +3,7 @@ import MapBubbles from "./MapBubbles"
 import MapBubbleForm from "./MapBubbleForm"
 
 // have a state here that gets updates with the mapbubbleform
-let coordinates = useState([52.517037, 13.38886]);
+// let coordinates = useState([52.517037, 13.38886]);
 
 function JoinBubble(props) {
     return (
