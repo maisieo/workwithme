@@ -21,9 +21,7 @@ const MapBubbles = (props) => {
     // resets to empty string
   };
 
-  let mapCoordinates = coordinates;
-  console.log(coordinates);
-  return (
+    return (
     <div>
       
       <MapContainer center={position} zoom={12} scrollWheelZoom={false}>

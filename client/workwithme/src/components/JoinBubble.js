@@ -6,8 +6,8 @@ function NewBubble() {
     return (
         <div className="NewBubble">
             Join an existing Bubble
-            <MapBubbleForm onSubmit={(location) => getCoordinates(location)} coordinates={coordinates} />
-            <MapBubbles coordinates={coordinates}/>
+            <MapBubbleForm />
+            <MapBubbles/>
         </div>
     );
 }
