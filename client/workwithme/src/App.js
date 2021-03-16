@@ -15,6 +15,11 @@ function App() {
     // history.push("/new-bubble-created");
   }
 
+  function onSubmit() {
+
+    
+  }
+
   return (
     <div>
       <Navbar />

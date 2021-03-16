@@ -8,6 +8,9 @@ function MapBubbleForm(props) {
 
   const key = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
   const BASEURL = "http://www.mapquestapi.com/geocoding/v1/address?key";
+  let latitude = "";
+  let longitude = "";
+  let latlng = "";
 
   //gets the coordinates from the city name/address
   const getCoordinates = async (location) => {
@@ -23,7 +26,11 @@ function MapBubbleForm(props) {
         console.log("Response ok");
         // server received and understood the request
         let data = await response.json();
-        setCoordinates(data); //update state
+        latitude = data.results[0].locations[0].latLng.lat;
+        longitude = data.results[0].locations[0].latLng.lng;
+        latlng = [latitude, longitude];
+        setCoordinates(latlng); //update state
+        // console.log("This are coorindates", coordinates);
       } else {
         console.log("Run into an error");
         setError(`Server error: ${response.status} ${response.statusText}`);
@@ -44,9 +51,12 @@ function MapBubbleForm(props) {
   //defines what to do when a user submits. Sets location.
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit(location);
+    // props.onSubmit(location);
+    console.log("location", location);
     setLocation("");
-    getCoordinates();
+    getCoordinates(location);
+    console.log(location);
+    console.log("This is coordinates", coordinates);
     // resets to empty string
   };
   return (

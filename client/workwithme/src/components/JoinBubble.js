@@ -2,11 +2,11 @@ import React from 'react';
 import MapBubbles from "./MapBubbles"
 import MapBubbleForm from "./MapBubbleForm"
 
-function NewBubble() {
+function NewBubble(props) {
     return (
         <div className="NewBubble">
             Join an existing Bubble
-            <MapBubbleForm />
+            <MapBubbleForm /*onSubmit={location => ocation(location)}*//>
             <MapBubbles/>
         </div>
     );
