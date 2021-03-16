@@ -13,6 +13,7 @@ function Navbar() {
             <li><NavLink to="/" exact activeClassName="selected" className="navLink" >About</NavLink></li>
                 <li><NavLink to="/new-bubble" activeClassName="selected" className="navLink">Create a bubble</NavLink></li>
                 <li><NavLink to="/join-bubble" activeClassName="selected" className="navLink">Join an existing bubble</NavLink></li>
+                <button className="login-btn">Login</button>
             </ul>
         </nav>
     );

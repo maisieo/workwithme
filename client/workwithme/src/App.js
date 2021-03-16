@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import "./App.css";
 
 // // import { Icon } from "leaflet";
-import { NavBar } from "../components/NavBar"
-import Navbar from "./components/Navbar";
-import Routes from "./components/Routes";
+import Navbar from "./Components/Navbar";
+import Routes from "./Components/Routes";
 // import { useHistory } from 'react-router-dom';
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <Navbar />
       <header className="App-header">
         Here's our map! It's highly editable by the way :)
         
