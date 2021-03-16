@@ -1,3 +1,4 @@
+import { latLng } from "leaflet";
 import React, { useState } from "react";
 import "./App.css";
 
@@ -7,7 +8,6 @@ import Routes from "./components/Routes";
 // import { useHistory } from 'react-router-dom';
 
 function App() {
- 
   // const history = useHistory();
 
   function showNewBubble(event) {
@@ -15,15 +15,15 @@ function App() {
     // history.push("/new-bubble-created");
   }
 
-  function onSubmit() {
+  // function passCoordinatesFromMapForm() {
+  //   setCoordinates(latLng)
 
-    
-  }
+  // }
 
   return (
     <div>
       <Navbar />
-      <Routes showNewBubble={() => showNewBubble}/>
+      <Routes showNewBubble={() => showNewBubble} />
     </div>
   );
 }

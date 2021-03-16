@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 // // import { Icon } from "leaflet";
 
-const MapBubbles = (props) => {
+const MapBubbles = (props, coordinates) => {
   // //  define the initial use state of the form
   // const [location, setLocation] = useState("");
 
