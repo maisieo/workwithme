@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./App.css";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 // // import { Icon } from "leaflet";
+import { NavBar } from "../components/NavBar"
 
 const position = [51.505, -0.09];
 function App() {
   return (
     <div className="App">
+      <NavBar />
       <header className="App-header">
         Here's our map! It's highly editable by the way :)
         
