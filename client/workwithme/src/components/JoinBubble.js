@@ -9,8 +9,8 @@ function JoinBubble(props) {
     return (
         <div className="NewBubble">
             Join an existing Bubble
-            <MapBubbleForm onSubmit={coordinates => getCoordinates(coordinates)}/>
-            <MapBubbles coordinates={coordinates}/>
+            <MapBubbleForm /*onSubmit={coordinates => getCoordinates(coordinates)}/*//>
+            <MapBubbles /*coordinates={coordinates}/*//>
         </div>
     );
 }

@@ -20,7 +20,7 @@ const MapBubbles = (props, coordinates) => {
   //   setLocation("");
   //   // resets to empty string
   // };
-  const position = props.coordinates;
+  const position = [52.517037, 13.38886]
     return (
     <div>
       
