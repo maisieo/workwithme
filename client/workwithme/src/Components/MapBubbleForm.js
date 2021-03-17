@@ -42,9 +42,8 @@ function MapBubbleForm(props) {
   };
 
   const handleChange = (e) => {
-      setLocation(e.target.value);
-
-    };
+    setLocation(e.target.value);
+  };
 
   //defines what to do when a user submits. Sets location.
   const handleSubmit = (e) => {
@@ -52,7 +51,7 @@ function MapBubbleForm(props) {
     getCoordinates(location);
     props.onSubmit(coordinates);
     setLocation("");
-        // resets to empty string
+    // resets to empty string
   };
   return (
     //HTML for the form

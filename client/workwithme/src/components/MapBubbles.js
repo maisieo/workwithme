@@ -3,8 +3,8 @@ import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 // // import { Icon } from "leaflet";
 
 const MapBubbles = (props) => {
-  const position = /* props.coordinates; */[52.517037,
-  13.38886] // this should be props.coordinates
+  const position =  props.coordinates; /*[52.517037,
+  13.38886]*/ // this should be props.coordinates
   console.log("This is coordinates props", props.coordinates);
   return (
     <div>
