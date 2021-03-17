@@ -1,0 +1,36 @@
+/* .Navbar {
+    border: 1px solid #ccc;
+} */
+
+.Navbar ul {
+    list-style-type: none;
+  }
+  
+  .navLink {
+      color: black;
+      text-transform: uppercase;
+    }
+  
+  .selected {
+      color: darkblue;
+      font-weight: bold;
+    }
+  
+    /* nav {
+      border-bottom: 1px solid #ccc;
+    } */
+    
+    nav ul {
+      list-style-type: none;
+    }
+    
+    nav li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    
+    nav a {
+      padding: 5px;
+    }
+    
+    

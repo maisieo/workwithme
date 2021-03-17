@@ -4,6 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// generating tokens for the user to use when logging in
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcrypt');
+const BCRYPT_WORK_FACTOR = 12;
+let payload = {userID: userId};
+let token = jwt.sign(payload, process.env.SECRET_KEY);
+let hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
+let passwordMatched = await bcrypt.compare(attempt, hashedPassword);
+// the code above hashes the user password and compares it to the one stored
+// if the hashed password matches, the user can continue
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 

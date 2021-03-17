@@ -1,12 +1,30 @@
+import { latLng } from "leaflet";
 import React, { useState } from "react";
-import "./App.css";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
+import "./App.css";
+
 // // import { Icon } from "leaflet";
+import Navbar from "./Components/Navbar";
+import Routes from "./Components/Routes";
+// import { useHistory } from 'react-router-dom';
 
 const position = [51.505, -0.09];
 function App() {
+  // const history = useHistory();
+
+  function showNewBubble(event) {
+    event.preventDefault();
+    // history.push("/new-bubble-created");
+  }
+
+  // function passCoordinatesFromMapForm() {
+  //   setCoordinates(latLng)
+
+  // }
+
   return (
     <div className="App">
+      <Navbar />
       <header className="App-header">
         Here's our map! It's highly editable by the way :)
         
@@ -21,6 +39,10 @@ function App() {
         </MapContainer>
         
       </header>
+    <div>
+      <Navbar />
+      <Routes showNewBubble={() => showNewBubble} />
+    </div>
     </div>
   );
 }
