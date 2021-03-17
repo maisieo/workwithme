@@ -4,8 +4,8 @@ import HomeView from './HomeView';
 import NewBubble from "./NewBubble"
 import JoinBubble from "./JoinBubble"
 import MapWithNewBubble from './MapWithNewBubble';
-
-
+import Login from "./Login"
+import Register from "./Register"
 
 function Routes(props) {
     return (
@@ -23,6 +23,13 @@ function Routes(props) {
             <JoinBubble/>
             </Route>
 
+            <Route path="/login" exact>
+                <Login/>
+            </Route>
+
+            <Route path="/register" exact>
+                <Register/>
+            </Route>
             {/* <Route exact path="/new-bubble-created">
                 <MapWithNewBubble />
             </Route> */}
