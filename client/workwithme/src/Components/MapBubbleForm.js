@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function MapBubbleForm(props) {
   //  define the initial use state of the form
   const [location, setLocation] = useState("");
-  let [coordinates, setCoordinates] = useState(null);
-  let [error, setError] = useState(null);
+  const [coordinates, setCoordinates] = useState(null);
+  const [error, setError] = useState(null);
 
   const key = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
   const BASEURL = "http://www.mapquestapi.com/geocoding/v1/address?key";
@@ -13,7 +13,7 @@ function MapBubbleForm(props) {
   let latlng = "";
 
   //gets the coordinates from the city name/address
-  const getCoordinates = async (location) => {
+  const getCoordinates = async location => {
     let url = `${BASEURL}=${key}&location=${location}`;
     // sets the url for the query
     setCoordinates(null);
@@ -42,22 +42,17 @@ function MapBubbleForm(props) {
   };
 
   const handleChange = (e) => {
-    // handle key presses
-    setLocation(e.target.value);
-    // e is the event that receives the event, which has a property of value
-    // sets the location field
-  };
+      setLocation(e.target.value);
+
+    };
 
   //defines what to do when a user submits. Sets location.
   const handleSubmit = (e) => {
     e.preventDefault();
-    // props.onSubmit(location);
-    console.log("location", location);
-    setLocation("");
     getCoordinates(location);
-    console.log(location);
-    console.log("This is coordinates", coordinates);
-    // resets to empty string
+    props.onSubmit(coordinates);
+    setLocation("");
+        // resets to empty string
   };
   return (
     //HTML for the form

@@ -15,11 +15,7 @@ function App() {
     // history.push("/new-bubble-created");
   }
 
-  // function passCoordinatesFromMapForm() {
-  //   setCoordinates(latLng)
-
-  // }
-
+  
   return (
     <div>
       <Navbar />
