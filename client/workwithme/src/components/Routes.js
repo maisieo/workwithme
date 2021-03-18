@@ -24,7 +24,7 @@ function Routes(props) {
             </Route>
 
             <Route exact path="/new-bubble-created">
-            <MapWithNewBubble />
+            <MapWithNewBubble bubble={props.bubble} />
             </Route>
     
         </Switch>
