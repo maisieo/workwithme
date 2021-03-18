@@ -15,17 +15,17 @@ function Routes(props) {
                 <HomeView/>
             </Route>
 
-            <Route exact path="/new-bubble">
-            <NewBubble />
+            <Route exact path="/new-bubble"
+            render = {() => <NewBubble showNewBubble={props.showNewBubble()}/>}>
             </Route> 
 
             <Route exact path="/join-bubble">
             <JoinBubble/>
             </Route>
 
-            {/* <Route exact path="/new-bubble-created">
-                <MapWithNewBubble />
-            </Route> */}
+            <Route exact path="/new-bubble-created">
+            <MapWithNewBubble />
+            </Route>
     
         </Switch>
     );

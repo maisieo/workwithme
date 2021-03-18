@@ -1,17 +1,19 @@
-import { latLng } from "leaflet";
-import React, { useState } from "react";
+// import { latLng } from "leaflet";
+// import React, { useState } from "react";
 import "./App.css";
+// import { useHistory } from 'react-router-dom';
 
 // // import { Icon } from "leaflet";
 import Navbar from "./components/Navbar";
 import Routes from "./components/Routes";
-// import { useHistory } from 'react-router-dom';
+
 
 function App() {
   // const history = useHistory();
 
-  function showNewBubble(event) {
-    event.preventDefault();
+  function showNewBubble(newBubbleData) {
+    // event.preventDefault();
+    console.log("New bubble is back to app", newBubbleData)
     // history.push("/new-bubble-created");
   }
 
@@ -19,7 +21,9 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes showNewBubble={() => showNewBubble} />
+      <Routes 
+      showNewBubble={()=>showNewBubble}
+      />
     </div>
   );
 }

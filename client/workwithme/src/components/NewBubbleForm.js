@@ -30,6 +30,7 @@ const NewBubbleForm = ({name, handleChange, postcode , workstations , wifi}) => 
            value={workstations} 
            onChange={handleChange}
            required>
+            <option id="emtpy"> </option>
            <option id="one" >1</option>
             <option id="two" >2 </option>
             <option id="three" >3 </option>

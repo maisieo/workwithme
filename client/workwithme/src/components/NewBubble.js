@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NewBubbleForm from "./NewBubbleForm";
 
-function NewBubble() {
+function NewBubble(props) {
   const [name, setName] = React.useState("");
   const [postcode, setPostcode] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
@@ -35,6 +35,9 @@ function NewBubble() {
         From ${name} ${postcode} with ${workstations} spots and WIFI ${wifi}
         `
     );
+    let newBubbleData = {name, postcode, workstations}
+    props.showNewBubble(newBubbleData);
+    console.log("New bubble" , newBubbleData)
     setName("");
     setPostcode("");
     setWorkstations("");

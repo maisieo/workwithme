@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function MapBubbleForm(props) {
   //  define the initial use state of the form
   const [location, setLocation] = useState("");
-  const [coordinates, setCoordinates] = useState(null);
+  const [coordinates, setCoordinates] = useState("");
   const [error, setError] = useState(null);
 
   const key = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
@@ -16,7 +16,7 @@ function MapBubbleForm(props) {
   const getCoordinates = async location => {
     let url = `${BASEURL}=${key}&location=${location}`;
     // sets the url for the query
-    setCoordinates(null);
+    setCoordinates("");
     //resets to null
 
     try {
