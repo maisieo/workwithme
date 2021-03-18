@@ -5,7 +5,7 @@ CREATE TABLE `users` (
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
     postcode VARCHAR(30) NOT NULL,
-    password VARCHAR(200) NOT NULL,
+    hashedpassword VARCHAR(200) NOT NULL,
     email VARCHAR(200) NOT NULL,
     wsneeded INT NOT NULL
 );
