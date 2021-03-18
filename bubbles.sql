@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS `bubbles`;
 CREATE TABLE `bubbles` (
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL,
     username VARCHAR(30) NOT NULL UNIQUE,
     postcode VARCHAR(30) NOT NULL,
     wsneeded INT NOT NULL,
