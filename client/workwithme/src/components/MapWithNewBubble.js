@@ -1,6 +1,6 @@
 import React from 'react';
 import MapBubbles from "./MapBubbles"
-import MapBubbleForm from "./MapBubbleForm";
+// import MapBubbleForm from "./MapBubbleForm";
 
 
 function MapWithNewBubble() {
