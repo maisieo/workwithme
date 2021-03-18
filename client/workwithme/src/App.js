@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 import "./App.css";
 
+// the code below is for checking if users are being authorized to use the app
+// import Local from './helpers/Local';
+// import Api from './helpers/Api';
+
 // // import { Icon } from "leaflet";
 import Navbar from "./Components/Navbar";
 import Routes from "./Components/Routes";
