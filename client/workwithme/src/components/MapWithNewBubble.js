@@ -3,10 +3,15 @@ import MapBubbles from "./MapBubbles"
 // import MapBubbleForm from "./MapBubbleForm";
 
 
-function MapWithNewBubble() {
+function MapWithNewBubble(props) {
+
+
+
     return (
         <div className="NewBubble">
-           Here is your new bubble
+           <h2>Your new bubble has been created</h2>
+           <p>Welcome {props.bubble.name}</p>
+            <p> You have {props.bubble.workstations} workstations to offer</p>
             <MapBubbles />
         </div>
     );
