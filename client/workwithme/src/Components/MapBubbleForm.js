@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 
 function MapBubbleForm(props) {
   //  define the initial use state of the form

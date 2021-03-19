@@ -5,12 +5,13 @@ function NewBubble(props) {
   const [name, setName] = React.useState("");
   const [postcode, setPostcode] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
+  // const [isChecked , setIsChecked] = useState(false)
   const [wifi, setWifi] = React.useState(true);
-  const [petfriendly, setPetfriendly] = React.useState(true)
-  const [kitchen, setKitchen] = React.useState(true);
-  const [quietspace, setQuietspace] = React.useState(true);
-  const [wheelchair, setWheelchair] = React.useState(true);
-  const [smoking, setSmoking] = React.useState(true);
+  const [petfriendly, setPetfriendly] = React.useState(false)
+  const [kitchen, setKitchen] = React.useState(false);
+  const [quietspace, setQuietspace] = React.useState(false);
+  const [wheelchair, setWheelchair] = React.useState(false);
+  const [smoking, setSmoking] = React.useState(false);
   
 
 
@@ -28,22 +29,22 @@ function NewBubble(props) {
         setWorkstations(event.target.value);
         break;
       case "wifi":
-        setWifi(event.target.value);
+        setWifi(event.target.checked);
         break;
       case "petfriendly":
-        setPetfriendly(event.target.value);
+        setPetfriendly(event.target.checked);
           break;
       case "kitchen":
-        setKitchen(event.target.value);
+        setKitchen(event.target.checked);
         break;
       case "quietspace":
-        setQuietspace(event.target.value);
+        setQuietspace(event.target.checked);
         break;
       case "wheelchair":
-        setWheelchair(event.target.value);
+        setWheelchair(event.target.checked);
         break;
       case "smoking":
-        setSmoking(event.target.value);
+        setSmoking(event.target.checked);
         break;
       default:
         break;

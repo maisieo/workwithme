@@ -42,13 +42,13 @@ const NewBubbleForm = ({name, handleChange, postcode , workstations , wifi, petf
             <span> Wifi
             <input 
             type="checkbox"
-            value={wifi}
             onChange={handleChange}
-            > 
-            </input>
+            value={wifi}
+            />
             </span>
             <span> Pet friendly
-            <input type="checkbox"
+            <input 
+            type="checkbox"
             value={petfriendly}
             onChange={handleChange}> 
             </input>

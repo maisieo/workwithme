@@ -11,7 +11,7 @@ import Routes from "./components/Routes";
 
 function App() {
   // const history = useHistory();
-  const [bubble, setBubble] = useState([{name: "Julie"}]);
+  const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
   let history = useHistory();
 
   function showNewBubble(newBubbleData) {
