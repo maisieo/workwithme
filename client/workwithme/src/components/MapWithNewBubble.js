@@ -5,13 +5,11 @@ import MapBubbles from "./MapBubbles"
 
 function MapWithNewBubble(props) {
 
-
-
     return (
         <div className="NewBubble">
            <h2>Your new bubble has been created</h2>
            <p>Welcome {props.bubble.name}</p>
-            <p> You have {props.bubble.workstations} workstations to offer</p>
+            <p> You have {props.bubble.workstations} workstations to offer and {props.bubble.wifi}</p>
             <MapBubbles />
         </div>
     );
