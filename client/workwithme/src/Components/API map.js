@@ -8,6 +8,7 @@ const BASEURL = "http://www.mapquestapi.com/geocoding/v1/address?key";
 function APImap() {
   const [data, setData] = useState("");
   const [error, setError] = useState("");
+  // location = props.location;
 
   //API data request
   const getData = async (location) => {
@@ -22,6 +23,12 @@ function APImap() {
         console.log("Response ok");
         let data = await response.json();
         setData(data);
+        let coordinates = [
+          data.results[0].locations[0].latLng.lat,
+          data.results[0].locations[0].latLng.lng,
+        ];
+        console.log("These are coordinates", coordinates);
+        console.log("This is data set by getData", data);
       } else {
         console.log("Run into an error");
         setError(`Server error: ${response.status} ${response.statusText}`);
@@ -32,34 +39,36 @@ function APImap() {
     }
   };
 
+  // console.log("display results", data.results[0])
   return (
     <div>
-          <MapBubbleForm onSubmit={(location) => getData(location)} />
+      <MapBubbleForm onSubmit={(location) => getData(location)} />
 
-      <h1> The data for</h1>
-      <MapContainer
-        center={[
-        //   data.results[0].locations[0].latLng.lat,
-        //   data.results[0].locations[0].latLng.lng,
-        50.8503 , -4.3517
-        ]}
-        zoom={12}
-        scrollWheelZoom={true}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker
-          position={[
-            // data.results[0].locations[0].latLng.lat,
-            // data.results[0].locations[0].latLng.lng,
-            50.8503 , -4.3517
+      {data && (
+        <MapContainer
+          center={[
+            data.results[0].locations[0].latLng.lat,
+            data.results[0].locations[0].latLng.lng,
+            // 50.8503 , -4.3517
           ]}
+          zoom={12}
+          scrollWheelZoom={true}
         >
-          <Popup>Buuble 1</Popup>
-        </Marker>
-      </MapContainer>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker
+            position={[
+              data.results[0].locations[0].latLng.lat,
+              data.results[0].locations[0].latLng.lng,
+              // 50.8503 , -4.3517
+            ]}
+          >
+            <Popup>Buuble 1</Popup>
+          </Marker>
+        </MapContainer>
+      )}
     </div>
   );
 }

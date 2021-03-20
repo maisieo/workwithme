@@ -1,5 +1,6 @@
 import React from 'react';
-import MapBubbles from "./MapBubbles"
+import APImap from './API map';
+
 // import MapBubbleForm from "./MapBubbleForm";
 
 
@@ -21,7 +22,7 @@ function MapWithNewBubble(props) {
             <span>Wheelchair Access: {props.bubble.wheelchair ? "Yes" : "No"}</span>
             <span>Smoking Corner {props.bubble.smoking ? "Yes" : "No"}</span> */}
             </p>
-            <MapBubbles />
+            <APImap />
         </div>
     );
 }

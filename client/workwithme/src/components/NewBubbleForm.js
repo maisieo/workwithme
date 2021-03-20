@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewBubbleForm = ({name, handleChange, location , workstations , wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}) => (
+const NewBubbleForm = ({name, handleChange,  workstations , wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}) => (
     <div>
             <label> Name
             <input
@@ -12,16 +12,6 @@ const NewBubbleForm = ({name, handleChange, location , workstations , wifi, petf
             autoComplete="nope"
             >
             </input>
-          </label>
-
-          <label> location
-           <input 
-           name="location" 
-           type="text"
-           value={location} 
-           onChange={handleChange}
-           >
-          </input>
           </label>
 
           <label> How many workstations do you offer?

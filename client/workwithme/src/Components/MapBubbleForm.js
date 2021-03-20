@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import APImap from "./API map"
 
 function MapBubbleForm(props) {
   const [location, setLocation] = useState("");
@@ -17,6 +18,7 @@ function MapBubbleForm(props) {
 
   return (
     //   //HTML for the form
+    
     <div className="MapBubbleForm">
       <form onSubmit={handleSubmit}>
         <label>
@@ -30,6 +32,7 @@ function MapBubbleForm(props) {
           />
         </label>
       </form>
+      {/* <APImap onSubmit={(location) => getData(location)} /> */}
     </div>
   );
 }

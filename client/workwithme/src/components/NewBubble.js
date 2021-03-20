@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import NewBubbleForm from "./NewBubbleForm";
+import APImap from "./API map"
 
 function NewBubble(props) {
   const [name, setName] = React.useState("");
-  const [location, setLocation] = React.useState("");
+  // const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
   // const [isChecked , setIsChecked] = useState(false)
   const [wifi, setWifi] = React.useState(true);
@@ -22,9 +23,9 @@ function NewBubble(props) {
       case "name":
         setName(event.target.value);
         break;
-      case "location":
-        setLocation(event.target.value);
-        break;
+      // case "location":
+      //   setLocation(event.target.value);
+        // break;
       case "workstations":
         setWorkstations(event.target.value);
         break;
@@ -55,14 +56,13 @@ function NewBubble(props) {
     event.preventDefault();
     console.log(
       `A request has been logged: 
-        From ${name} ${location} with ${workstations} spots and WIFI ${wifi}
+        From ${name} with ${workstations} spots and WIFI ${wifi}
         `
     );
-    let newBubbleData = {name, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}
+    let newBubbleData = {name, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}
     props.showNewBubble(newBubbleData);
     console.log("New bubble" , newBubbleData)
     setName("");
-    setLocation("");
     setWorkstations("");
     setWifi("");
     setPetfriendly("")
@@ -80,7 +80,7 @@ function NewBubble(props) {
         Create a new Bubble
         <NewBubbleForm
           name={name}
-          location={location}
+          // location={location}
           workstations={workstations}
           handleChange={handleChange}
           wifi={wifi}
@@ -91,6 +91,7 @@ function NewBubble(props) {
           smoking={smoking}
 
         />
+         <APImap />
         <button id="buttonCreateBubble" type="submit">
           {" "}
           Create a bubble{" "}
