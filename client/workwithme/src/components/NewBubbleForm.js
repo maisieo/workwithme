@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewBubbleForm = ({name, handleChange, postcode , workstations , wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}) => (
+const NewBubbleForm = ({name, handleChange, location , workstations , wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}) => (
     <div>
             <label> Name
             <input
@@ -14,11 +14,11 @@ const NewBubbleForm = ({name, handleChange, postcode , workstations , wifi, petf
             </input>
           </label>
 
-          <label> Postcode
+          <label> location
            <input 
-           name="postcode" 
+           name="location" 
            type="text"
-           value={postcode} 
+           value={location} 
            onChange={handleChange}
            >
           </input>

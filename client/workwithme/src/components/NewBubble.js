@@ -3,7 +3,7 @@ import NewBubbleForm from "./NewBubbleForm";
 
 function NewBubble(props) {
   const [name, setName] = React.useState("");
-  const [postcode, setPostcode] = React.useState("");
+  const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
   // const [isChecked , setIsChecked] = useState(false)
   const [wifi, setWifi] = React.useState(true);
@@ -22,8 +22,8 @@ function NewBubble(props) {
       case "name":
         setName(event.target.value);
         break;
-      case "postcode":
-        setPostcode(event.target.value);
+      case "location":
+        setLocation(event.target.value);
         break;
       case "workstations":
         setWorkstations(event.target.value);
@@ -55,14 +55,14 @@ function NewBubble(props) {
     event.preventDefault();
     console.log(
       `A request has been logged: 
-        From ${name} ${postcode} with ${workstations} spots and WIFI ${wifi}
+        From ${name} ${location} with ${workstations} spots and WIFI ${wifi}
         `
     );
-    let newBubbleData = {name, postcode, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}
+    let newBubbleData = {name, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}
     props.showNewBubble(newBubbleData);
     console.log("New bubble" , newBubbleData)
     setName("");
-    setPostcode("");
+    setLocation("");
     setWorkstations("");
     setWifi("");
     setPetfriendly("")
@@ -80,7 +80,7 @@ function NewBubble(props) {
         Create a new Bubble
         <NewBubbleForm
           name={name}
-          postcode={postcode}
+          location={location}
           workstations={workstations}
           handleChange={handleChange}
           wifi={wifi}

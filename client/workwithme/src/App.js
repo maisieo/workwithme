@@ -2,19 +2,45 @@
 import React, { useState } from "react";
 import "./App.css";
 import { useHistory } from 'react-router-dom';
+
+
 // // import { Icon } from "leaflet";
 import Navbar from "./Components/Navbar";
 import Routes from "./Components/Routes";
-const opencage = require('opencage-api-client');
 
-const OCD_API_KEY = process.env.REACT_APP_OCD_API_KEY;
+const key = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
+const BASEURL = "http://www.mapquestapi.com/geocoding/v1/address?key";
 
 function App() {
   // const history = useHistory();
+  const [data, setData] = useState("");
+  const [error, setError] = useState("");
+
+  //API data request
+  const getData = async (location) => {
+    let url = `${BASEURL}=${key}&location=${location}`;
+    console.log("URL", url);
+    setData("");
+
+    try {
+      let response = await fetch(url);
+      // call fetch, wait for return
+      if (response.ok) {
+        console.log("Response ok");
+        let data = await response.json();
+        setData(data);
+      } else {
+        console.log("Run into an error");
+        setError(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log("Ended up in catch");
+      setError(`Network error: ${err.message}`);
+    }
+  };
+
   const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
   let history = useHistory();
-  const [markers, setMarkers] = [];
-  const [mapInput, setMapInput] = "";
 
   function showNewBubble(newBubbleData) {
     // event.preventDefault();
