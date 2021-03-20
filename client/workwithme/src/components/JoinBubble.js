@@ -1,25 +1,45 @@
 import React, { useState } from "react";
 import MapBubbles from "./MapBubbles";
 import MapBubbleForm from "./MapBubbleForm";
-
+import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 // have a state here that gets updates with the mapbubbleform
 
-function JoinBubble() {
-  const [inputCoordinates, setInputCoordinates] = useState([
-    52.517037,
-    13.38886,
-  ]);
+//API DATA
+const key = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
+const BASEURL = "http://www.mapquestapi.com/geocoding/v1/address?key";
 
-  const joiningFunction = (coordinates) => {
-    setInputCoordinates(coordinates);
-    console.log("These are coordinates", coordinates)
+function JoinBubble() {
+  const [data, setData] = useState("");
+  const [error, setError] = useState("");
+
+  //API data request
+  const getData = async (location) => {
+    let url = `${BASEURL}=${key}&location=${location}`;
+    console.log("URL", url);
+    setData("");
+
+    try {
+      let response = await fetch(url);
+      // call fetch, wait for return
+      if (response.ok) {
+        console.log("Response ok");
+        let data = await response.json();
+        setData(data);
+      } else {
+        console.log("Run into an error");
+        setError(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log("Ended up in catch");
+      setError(`Network error: ${err.message}`);
+    }
   };
 
   return (
     <div className="NewBubble">
-      Join an existing Bubble
-      <MapBubbleForm onSubmit={(coordinates) => joiningFunction(coordinates)} />
-      <MapBubbles coordinates={inputCoordinates} />
+      <h3>Join an existing Bubble</h3>
+      <MapBubbleForm onSubmit={(location) => getData(location)} />
+      {data && <MapBubbles data={data} />}
     </div>
   );
 }

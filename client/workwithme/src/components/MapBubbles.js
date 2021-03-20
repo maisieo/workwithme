@@ -3,17 +3,25 @@ import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 // // import { Icon } from "leaflet";
 
 const MapBubbles = (props) => {
-  const position = [52.517037,
-  13.38886] // this should be props.coordinates
-  console.log("This is coordinates props", props.coordinates);
+  let data = props.data;
+  
   return (
     <div>
-      <MapContainer center={position} zoom={12} scrollWheelZoom={false}>
+      <h1> The data for {data.results[0].locations[0].latLng.lng} longitude</h1>
+      <MapContainer
+        center={[
+          data.results[0].locations[0].latLng.lat,
+          data.results[0].locations[0].latLng.lng,
+        ]}
+        zoom={12}
+        scrollWheelZoom={true}
+      >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
+        <Marker position={[data.results[0].locations[0].latLng.lat,
+          data.results[0].locations[0].latLng.lng]}>
           <Popup>Buuble 1</Popup>
         </Marker>
       </MapContainer>
