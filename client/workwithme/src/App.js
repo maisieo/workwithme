@@ -1,7 +1,7 @@
 // import { latLng } from "leaflet";
 import React, { useState } from "react";
 import "./App.css";
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 
 // // import { Icon } from "leaflet";
@@ -13,23 +13,23 @@ function App() {
   // const history = useHistory();
  
 
-  const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
-  let history = useHistory();
+  //const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
+  // let history = useHistory();
 
-  function showNewBubble(newBubbleData) {
-    // event.preventDefault();
-    console.log("New bubble is back to app", newBubbleData)
-    setBubble(newBubbleData)
-    history.push("/new-bubble-created");
-  }
+  // function showNewBubble(newBubbleData) {
+  //   // event.preventDefault();
+  //   console.log("New bubble is back to app", newBubbleData)
+  //   setBubble(newBubbleData)
+  //   // history.push("/new-bubble-created");
+  // }
 
   
   return (
     <div>
       <Navbar />
       <Routes 
-      showNewBubble={()=>showNewBubble}
-      bubble={bubble}
+      // showNewBubble={()=>showNewBubble}
+      // bubble={bubble}
       />
     </div>
   );

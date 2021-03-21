@@ -3,7 +3,7 @@ import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 // // import { Icon } from "leaflet";
 
 const MapBubbles = (props) => {
-  let data = props.data;
+  
   
   return (
     // <div>
@@ -27,7 +27,7 @@ const MapBubbles = (props) => {
     //   </MapContainer>
     // </div>
     <div>
-      
+
     </div>
   );
 };
