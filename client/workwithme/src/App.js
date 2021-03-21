@@ -1,7 +1,9 @@
-import { latLng } from "leaflet";
+// import { latLng } from "leaflet";
 import React, { useState } from "react";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 import "./App.css";
+import { useHistory } from 'react-router-dom';
+
 
 // the code below is for checking if users are being authorized to use the app
 // import Local from './helpers/Local';
@@ -10,22 +12,23 @@ import "./App.css";
 // // import { Icon } from "leaflet";
 import Navbar from "./Components/Navbar";
 import Routes from "./Components/Routes";
-// import { useHistory } from 'react-router-dom';
 
 const position = [51.505, -0.09];
 function App() {
   // const history = useHistory();
+ 
 
-  function showNewBubble(event) {
-    event.preventDefault();
-    // history.push("/new-bubble-created");
+  const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
+  let history = useHistory();
+
+  function showNewBubble(newBubbleData) {
+    // event.preventDefault();
+    console.log("New bubble is back to app", newBubbleData)
+    setBubble(newBubbleData)
+    history.push("/new-bubble-created");
   }
 
-  // function passCoordinatesFromMapForm() {
-  //   setCoordinates(latLng)
-
-  // }
-
+  
   return (
     <div className="App">
       <Navbar />
@@ -45,7 +48,10 @@ function App() {
       </header>
     <div>
       <Navbar />
-      <Routes showNewBubble={() => showNewBubble} />
+      <Routes 
+      showNewBubble={()=>showNewBubble}
+      bubble={bubble}
+      />
     </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewBubbleForm = ({name, handleChange, postcode , workstations , wifi}) => (
+const NewBubbleForm = ({name, handleChange,  workstations , wifi, petfriendly, kitchen, quietspace, wheelchair, smoking}) => (
     <div>
             <label> Name
             <input
@@ -14,22 +14,13 @@ const NewBubbleForm = ({name, handleChange, postcode , workstations , wifi}) => 
             </input>
           </label>
 
-          <label> Postcode
-           <input 
-           name="postcode" 
-           type="text"
-           value={postcode} 
-           onChange={handleChange}
-           >
-          </input>
-          </label>
-
           <label> How many workstations do you offer?
           <select 
            name="workstations" 
            value={workstations} 
            onChange={handleChange}
            required>
+            <option id="emtpy"> </option>
            <option id="one" >1</option>
             <option id="two" >2 </option>
             <option id="three" >3 </option>
@@ -41,29 +32,39 @@ const NewBubbleForm = ({name, handleChange, postcode , workstations , wifi}) => 
             <span> Wifi
             <input 
             type="checkbox"
-            value={wifi}
             onChange={handleChange}
-            > 
-            </input>
+            value={wifi}
+            />
             </span>
             <span> Pet friendly
-            <input type="checkbox"> 
+            <input 
+            type="checkbox"
+            value={petfriendly}
+            onChange={handleChange}> 
             </input>
             </span>
             <span> Access to kitchen
-            <input type="checkbox"> 
+            <input type="checkbox"
+            value={kitchen}
+            onChange={handleChange}> 
             </input>
             </span>
             <span> Quiet space
-            <input type="checkbox"> 
+            <input type="checkbox"
+            value={quietspace}
+            onChange={handleChange}> 
             </input>
             </span>
             <span> Wheelchair access
-            <input type="checkbox"> 
+            <input type="checkbox"
+            value={wheelchair}
+            onChange={handleChange}> 
             </input>
             </span>
             <span> Smoking corner
-            <input type="checkbox"> 
+            <input type="checkbox"
+            value={smoking}
+            onChange={handleChange}> 
             </input>
             </span>
           </label>
