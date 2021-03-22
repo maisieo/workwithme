@@ -4,6 +4,10 @@ import "./App.css";
 // import { useHistory } from 'react-router-dom';
 
 
+// the code below is for checking if users are being authorized to use the app
+// import Local from './helpers/Local';
+// import Api from './helpers/Api';
+
 // // import { Icon } from "leaflet";
 import Navbar from "./Components/Navbar";
 import Routes from "./Components/Routes";
@@ -25,12 +29,14 @@ function App() {
 
   
   return (
+    <div className="App">
     <div>
       <Navbar />
       <Routes 
       // showNewBubble={()=>showNewBubble}
       // bubble={bubble}
       />
+    </div>
     </div>
   );
 }

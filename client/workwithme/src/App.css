@@ -27,6 +27,10 @@
 
 #mapid { height: 180px; }
 
+.NavBar {
+  background-color: lightcyan;
+}
+
 span::before { content: '\A'; white-space: pre; }
 
 
