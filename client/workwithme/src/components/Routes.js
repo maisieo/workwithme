@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomeView from './HomeView';
-import NewBubble from "./NewBubble"
-import JoinBubble from "./JoinBubble"
+import NewBubble from "./NewBubble";
+import JoinBubble from "./JoinBubble";
 import MapWithNewBubble from './MapWithNewBubble';
-import Login from "./Login"
-import Register from "./Register"
+import Login from "./Login";
+import Register from "./Register";
 
 function Routes(props) {
     return (
@@ -15,14 +15,14 @@ function Routes(props) {
                 <HomeView/>
             </Route>
 
-            <Route exact path="/new-bubble"
-            render = {() => <NewBubble showNewBubble={props.showNewBubble()}/>}>
+            <Route exact path="/new-bubble">
+           <NewBubble />
+                 {/* render = {() => <NewBubble showNewBubble={props.showNewBubble()}/>}> */}
             </Route> 
 
             <Route exact path="/join-bubble">
             <JoinBubble/>
             </Route>
-
 
             <Route path="/login" exact>
                 <Login/>
@@ -31,14 +31,10 @@ function Routes(props) {
             <Route path="/register" exact>
                 <Register/>
             </Route>
-            {/* <Route exact path="/new-bubble-created">
-                <MapWithNewBubble />
-            </Route> */}
 
             <Route exact path="/new-bubble-created">
             <MapWithNewBubble bubble={props.bubble} />
             </Route>
-
     
         </Switch>
     );

@@ -32,7 +32,7 @@ function MapBubbleForm(props) {
           />
         </label>
       </form>
-      {/* <APImap onSubmit={(location) => getData(location)} /> */}
+     
     </div>
   );
 }
