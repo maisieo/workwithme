@@ -1,21 +1,35 @@
 // import { latLng } from "leaflet";
 import React, { useState } from "react";
 import "./App.css";
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 // the code below is for checking if users are being authorized to use the app
-// import Local from './helpers/Local';
-// import Api from './helpers/Api';
+import Local from './Components/helpers/Local';
+import Api from './Components/helpers/Api';
 
 // // import { Icon } from "leaflet";
 import Navbar from "./Components/Navbar";
 import Routes from "./Components/Routes";
-
+// import AuthenticatedRoute from "./Components/AuthenticatedRoute";
 
 function App() {
   // const history = useHistory();
- 
+
+    const [user, setUser] = useState(Local.getUser());
+    const [loginErrorMsg, setLoginErrorMsg] = useState('');
+
+    // async function doLogin(username, password) {
+    //     let response = await Api.loginUser(username, password);
+    //     if (response.ok) {
+    //         Local.saveUserInfo(response.data.token, response.data.user);
+    //         setUser(response.data.user);
+    //         setLoginErrorMsg('');
+    //         history.push('/');
+    //     } else {
+    //         setLoginErrorMsg('Login failed');
+    //     }
+    // }
 
   //const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
   // let history = useHistory();
@@ -35,6 +49,7 @@ function App() {
       <Routes 
       // showNewBubble={()=>showNewBubble}
       // bubble={bubble}
+      // doLogin={doLogin}
       />
     </div>
     </div>

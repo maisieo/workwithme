@@ -20,9 +20,18 @@ function Login(props) {
         }
     }
 
+    function doLogin(username,password) {
+        // login
+        console.log(username, password)
+    }
+
+    // function onSubmit(username, password) {
+        
+    // }
+
     function handleSubmit(event) {
         event.preventDefault();
-        props.onSubmit(username, password);
+        doLogin(username, password);
     }
 
     return (

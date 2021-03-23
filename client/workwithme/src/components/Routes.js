@@ -6,6 +6,7 @@ import JoinBubble from "./JoinBubble";
 import MapWithNewBubble from './MapWithNewBubble';
 import Login from "./Login";
 import Register from "./Register";
+import AuthenticatedRoute from "./AuthenticatedRoute";
 
 function Routes(props) {
     return (
@@ -25,7 +26,7 @@ function Routes(props) {
             </Route>
 
             <Route path="/login" exact>
-                <Login/>
+                <Login />
             </Route>
 
             <Route path="/register" exact>
@@ -34,6 +35,9 @@ function Routes(props) {
 
             <Route exact path="/new-bubble-created">
             <MapWithNewBubble bubble={props.bubble} />
+            </Route>
+            <Route>
+                <AuthenticatedRoute />
             </Route>
     
         </Switch>
