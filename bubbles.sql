@@ -5,6 +5,7 @@ CREATE TABLE `bubbles` (
     postcode VARCHAR(30) NOT NULL,
     wsneeded INT NOT NULL,
     totalws INT NOT NULL,
+    occupiedws INT NOT NULL,
     wifi BOOLEAN NOT NULL,
     petfriendly BOOLEAN NOT NULL,
     kitchen BOOLEAN NOT NULL,
@@ -17,4 +18,5 @@ CREATE TABLE `bubbles` (
     friday BOOLEAN NOT NULL,
     availablews INT NOT NULL,
     wheelchairaccess BOOLEAN NOT NULL
+    usersinbubble INT NOT NULL,
 );
