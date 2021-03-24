@@ -4,7 +4,7 @@ const { ensureSameUser } = require('../middleware/guards');
 const db = require("../model/helper");
 
 // get all users
-router.get('/', async function(req, res, next) {
+router.get('/users', async function(req, res, next) {
     let sql = 'SELECT * FROM users ORDER BY username';
 
     try {

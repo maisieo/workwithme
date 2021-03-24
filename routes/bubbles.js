@@ -6,7 +6,8 @@ const db = require("../model/helper");
 router.get("/", async (req, res, next) => {
   try {
     let results = await db("SELECT * FROM bubbles;");
-    res.send(results.data);
+    res.status(200).send(results.data);
+    // res.send(results.data);
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
@@ -31,19 +32,43 @@ router.get("/:id", async (req, res, next) => {
 
 // INSERT a new bubble into the DB
 router.post("/", async (req, res) => {
-  let { firstname, lastname } = req.body;
+  let {
+    ownername,
+    place,
+    totalws,
+    wifi,
+    petfriendly,
+    kitchen,
+    quietspace,
+    smokerfriendly,
+     lastname,
+    availablews,
+    wheelchairaccess,
+    usersinbubble,
+  } = req.body;
   let sql = `
-  INSERT INTO buubles (firstname, lastname)     name,
-  handleChange,
-  location,
-  workstations,
-  wifi,
-  petfriendly,
-  kitchen,
-  quietspace,
-  wheelchair,
-  smoking,
-  VALUES ("${firstname}", "${lastname}")
+  INSERT INTO bubbles (ownername,
+    place,
+    totalws,
+    wifi,
+    petfriendly,
+    kitchen,
+    quietspace,
+    smokerfriendly,
+    lastname,
+    availablews,
+    wheelchairaccess,
+    usersinbubble)
+  VALUES ("${ownername}", "${place}", "${totalws},
+  "${wifi}",
+  "${petfriendly}",
+  "${kitchen}",
+  "${quietspace}",
+  "${smokerfriendly}",
+ "${lastname}",
+ "${availablews}"
+"${wheelchairaccess}",
+"${usersinbubble}")
   `;
   try {
     let results = await db(sql);
@@ -62,7 +87,7 @@ router.delete("/:id", async (req, res) => {
     let results = await db(sql);
     if (results.data.length === 1) {
       sql = `DELETE FROM bubble WHERE id = ${id}`;
-      await db(sql); //calls again to return all students
+      await db(sql);
       results - (await db("SELECT * FROM bubbles"));
       res.send(results.data);
     } else {

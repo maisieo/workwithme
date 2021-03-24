@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS `bubbles`;
 CREATE TABLE `bubbles` (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    ownername VARCHAR(30) NOT NULL,
     username VARCHAR(30) NOT NULL UNIQUE,
-    postcode VARCHAR(30) NOT NULL,
+    place VARCHAR(30) NOT NULL,
     wsneeded INT NOT NULL,
     totalws INT NOT NULL,
-    occupiedws INT NOT NULL,
     wifi BOOLEAN NOT NULL,
     petfriendly BOOLEAN NOT NULL,
     kitchen BOOLEAN NOT NULL,
@@ -17,6 +17,6 @@ CREATE TABLE `bubbles` (
     thursday BOOLEAN NOT NULL,
     friday BOOLEAN NOT NULL,
     availablews INT NOT NULL,
-    wheelchairaccess BOOLEAN NOT NULL
-    usersinbubble INT NOT NULL,
+    wheelchairaccess BOOLEAN NOT NULL,
+    usersinbubble INT NOT NULL
 );
