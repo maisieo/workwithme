@@ -14,22 +14,21 @@ import Routes from "./Components/Routes";
 // import AuthenticatedRoute from "./Components/AuthenticatedRoute";
 
 function App() {
-  // const history = useHistory();
 
     const [user, setUser] = useState(Local.getUser());
     const [loginErrorMsg, setLoginErrorMsg] = useState('');
 
-    // async function doLogin(username, password) {
-    //     let response = await Api.loginUser(username, password);
-    //     if (response.ok) {
-    //         Local.saveUserInfo(response.data.token, response.data.user);
-    //         setUser(response.data.user);
-    //         setLoginErrorMsg('');
-    //         history.push('/');
-    //     } else {
-    //         setLoginErrorMsg('Login failed');
-    //     }
-    // }
+    async function doLogin(username, password) {
+        let response = await Api.loginUser(username, password);
+        if (response.ok) {
+            Local.saveUserInfo(response.data.token, response.data.user);
+            setUser(response.data.user);
+            setLoginErrorMsg('');
+            useHistory.push('/');
+        } else {
+            setLoginErrorMsg('Login failed');
+        }
+    }
 
   //const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
   // let history = useHistory();
