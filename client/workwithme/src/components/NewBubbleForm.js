@@ -13,7 +13,8 @@ const NewBubbleForm = ({
   smoking,
 }) => (
   <div>
-    <label>
+  
+     <label>
       {" "}
       Name
       <input
@@ -101,7 +102,7 @@ const NewBubbleForm = ({
         <input type="checkbox" value={smoking} onChange={handleChange}></input>
       </span>
     </label>
-  </div>
+    </div>
 );
 
 export default NewBubbleForm;

@@ -2,24 +2,18 @@ DROP TABLE IF EXISTS `bubbles`;
 CREATE TABLE `bubbles` (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ownername VARCHAR(30) NOT NULL,
-    username VARCHAR(30) NOT NULL UNIQUE,
+    username VARCHAR(30), 
     place VARCHAR(30) NOT NULL,
-    wsneeded INT NOT NULL,
+    wsneeded INT, 
     totalws INT NOT NULL,
     wifi BOOLEAN NOT NULL,
     petfriendly BOOLEAN NOT NULL,
     kitchen BOOLEAN NOT NULL,
     quietspace BOOLEAN NOT NULL,
     smokerfriendly BOOLEAN NOT NULL,
-    monday BOOLEAN NOT NULL,
-    tuesday BOOLEAN NOT NULL,
-    wednesday BOOLEAN NOT NULL,
-    thursday BOOLEAN NOT NULL,
-    friday BOOLEAN NOT NULL,
-    availablews INT NOT NULL,
-    wheelchairaccess BOOLEAN NOT NULL,
-    usersinbubble INT NOT NULL
-);
+    availablews INT,
+    wheelchairaccess BOOLEAN NOT NULL
+  );
 
 -- I've taken "NOT NULL" out of username, wsneeded, monday, tuesday, wednesday,
 -- thursday, friday, availablews and usersinbubble temporarily while I sort out

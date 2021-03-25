@@ -3,7 +3,7 @@ import NewBubbleForm from "./NewBubbleForm";
 import APImap from "./API map";
 import Popup from "./PopUp";
 
-function NewBubble(props) {
+function NewBubble({ addBubble }) {
   const [name, setName] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
@@ -14,12 +14,12 @@ function NewBubble(props) {
   const [quietspace, setQuietspace] = React.useState(false);
   const [wheelchair, setWheelchair] = React.useState(false);
   const [smoking, setSmoking] = React.useState(false);
-  const [bubble, setBubble] = useState([{ name: "Julie", workstations: "" }]);
+  const [bubble, setBubble] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   function handleChange(event) {
     // console.log('event: ', event)
-    console.log(event.target.checked);
+    // console.log(event.target.checked);
     switch (event.target.name) {
       case "name":
         setName(event.target.value);
@@ -71,6 +71,7 @@ function NewBubble(props) {
       wheelchair,
       smoking,
     };
+
     //props.showNewBubble(newBubbleData);
     setBubble(newBubbleData);
     console.log("New bubble", newBubbleData);
@@ -106,6 +107,33 @@ function NewBubble(props) {
           quietspace={quietspace}
           wheelchair={wheelchair}
           smoking={smoking}
+
+          // {(
+          //   ownername,
+          //   place,
+          //   totalws,
+          //   wifi,
+          //   petfriendly,
+          //   kitchen,
+          //   quietspace,
+          //   smokerfriendly,
+          //   availablews,
+          //   wheelchairaccess,
+          //   usersinbubble
+          // ) =>
+          //   addBubble(
+          //     ownername,
+          //     place,
+          //     totalws,
+          //     wifi,
+          //     petfriendly,
+          //     kitchen,
+          //     quietspace,
+          //     smokerfriendly,
+          //     availablews,
+          //     wheelchairaccess,
+          //     usersinbubble
+          //   )
         />
         <button
           id="buttonCreateBubble"
@@ -124,22 +152,31 @@ function NewBubble(props) {
                   <p>
                     {" "}
                     Your bubble has {bubble.workstations} workstation(s) to
-                    {bubble.wifi} bubble wifi {bubble.kitchen}bubble kitchen {bubble.kitchen}
+                    {bubble.wifi} bubble wifi {bubble.kitchen}bubble kitchen{" "}
+                    {bubble.kitchen}
                     offer{" "}
                   </p>
                   <h1> Features </h1>
                   <p>
-                    <span> Wifi: {bubble.wifi = "true" ? "Yes" : "No"}</span>
+                    <span> Wifi: {(bubble.wifi = "true" ? "Yes" : "No")}</span>
                     <span>
                       {" "}
-                      Pet Friendly: {bubble.petfriendly = "true" ? "Yes" : "No"}
+                      Pet Friendly:{" "}
+                      {(bubble.petfriendly = "true" ? "Yes" : "No")}
                     </span>
-                    <span>Kitchen Access: {bubble.kitchen = "true" ?  "Yes" : "No"}</span>
-                    <span>Quiet Space: {bubble.quietspace = "true" ? "Yes" : "No"}</span>
                     <span>
-                      Wheelchair Access: {bubble.wheelchair = "true" ?  "Yes" : "No"}
+                      Kitchen Access: {(bubble.kitchen = "true" ? "Yes" : "No")}
                     </span>
-                    <span>Smoking Corner {bubble.smoking = "true" ?  "Yes" : "No"}</span>
+                    <span>
+                      Quiet Space: {(bubble.quietspace = "true" ? "Yes" : "No")}
+                    </span>
+                    <span>
+                      Wheelchair Access:{" "}
+                      {(bubble.wheelchair = "true" ? "Yes" : "No")}
+                    </span>
+                    <span>
+                      Smoking Corner {(bubble.smoking = "true" ? "Yes" : "No")}
+                    </span>
                   </p>
                 </>
               }
