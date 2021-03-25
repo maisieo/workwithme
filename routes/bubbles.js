@@ -41,13 +41,13 @@ router.post("/", async (req, res) => {
     kitchen,
     quietspace,
     smokerfriendly,
-     lastname,
     availablews,
     wheelchairaccess,
-    usersinbubble,
-  } = req.body;
+    usersinbubble
+    } = req.body;
   let sql = `
-  INSERT INTO bubbles (ownername,
+  INSERT INTO bubbles (
+    ownername,
     place,
     totalws,
     wifi,
@@ -55,7 +55,6 @@ router.post("/", async (req, res) => {
     kitchen,
     quietspace,
     smokerfriendly,
-    lastname,
     availablews,
     wheelchairaccess,
     usersinbubble)

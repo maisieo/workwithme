@@ -20,3 +20,7 @@ CREATE TABLE `bubbles` (
     wheelchairaccess BOOLEAN NOT NULL,
     usersinbubble INT NOT NULL
 );
+
+-- I've taken "NOT NULL" out of username, wsneeded, monday, tuesday, wednesday,
+-- thursday, friday, availablews and usersinbubble temporarily while I sort out
+-- the front end for the bubbles
