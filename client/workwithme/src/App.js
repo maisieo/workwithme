@@ -15,7 +15,7 @@ function App() {
   // const history = useHistory();
 
   const [user, setUser] = useState(Local.getUser());
-  const [loginErrorMsg, setLoginErrorMsg] = useState("");
+  // const [loginErrorMsg, setLoginErrorMsg] = useState("");
   const [bubbles, setBubbles] = useState([]);
   useEffect(() => {
     getBubbles();

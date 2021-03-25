@@ -4,7 +4,7 @@ import APImap from "./API map";
 import Popup from "./PopUp";
 
 function NewBubble({ addBubble }) {
-  const [name, setName] = React.useState("");
+  const [firstname, setFirstname] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
   // const [isChecked , setIsChecked] = useState(false)
@@ -21,8 +21,8 @@ function NewBubble({ addBubble }) {
     // console.log('event: ', event)
     // console.log(event.target.checked);
     switch (event.target.name) {
-      case "name":
-        setName(event.target.value);
+      case "firstname":
+        setFirstname(event.target.value);
         break;
       case "location":
         setLocation(event.target.value);
@@ -57,11 +57,11 @@ function NewBubble({ addBubble }) {
     event.preventDefault();
     console.log(
       `A request has been logged: 
-        From ${name} with ${workstations} spots and WIFI ${wifi}
+        From ${firstname} with ${workstations} spots and WIFI ${wifi}
         `
     );
     let newBubbleData = {
-      name,
+      firstname,
       location,
       workstations,
       wifi,
@@ -75,7 +75,7 @@ function NewBubble({ addBubble }) {
     //props.showNewBubble(newBubbleData);
     setBubble(newBubbleData);
     console.log("New bubble", newBubbleData);
-    setName("");
+    setFirstname("");
     setLocation("");
     setWorkstations("");
     setWifi("");

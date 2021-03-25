@@ -33,7 +33,7 @@ router.get("/:id", async (req, res, next) => {
 // INSERT a new bubble into the DB
 router.post("/", async (req, res) => {
   let {
-    ownername,
+    firstname,
     place,
     totalws,
     wifi,
@@ -47,7 +47,7 @@ router.post("/", async (req, res) => {
     } = req.body;
   let sql = `
   INSERT INTO bubbles (
-    ownername,
+    firstname,
     place,
     totalws,
     wifi,
