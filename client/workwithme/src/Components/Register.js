@@ -24,17 +24,7 @@ function Register(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // props.onSubmit(email, username, password);
-    // when the form is submitted, it fetches the post method
-    return fetch("/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({username, password, email}),
-    })
-      .then((response) => response.json())
-      .catch((err) => console.log("ERROR:", err.message));
+    props.onSubmit(email, username, password);
   }
 
   return (

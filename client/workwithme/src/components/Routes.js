@@ -8,6 +8,19 @@ import Login from "./Login";
 import Register from "./Register";
 import AuthenticatedRoute from "./AuthenticatedRoute";
 
+async function doRegister(username, password, email) {
+    let newUser = {username, password, email}
+    fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then((response) => response.json())
+      .catch((err) => console.log("ERROR:", err.message));
+}
+
 function Routes(props) {
     return (
         <Switch>
@@ -30,7 +43,9 @@ function Routes(props) {
             </Route>
 
             <Route path="/register" exact>
-                <Register/>
+                <Register
+                onSubmit={(u, p, e) => doRegister(u, p, e)} 
+                />
             </Route>
 
             <Route exact path="/new-bubble-created">
