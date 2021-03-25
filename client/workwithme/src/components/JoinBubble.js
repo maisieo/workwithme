@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MapBubbles from "./MapBubbles";
+
 import MapBubbleForm from "./MapBubbleForm";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 import APImap from "./API map";

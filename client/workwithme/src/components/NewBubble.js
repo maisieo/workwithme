@@ -3,7 +3,7 @@ import NewBubbleForm from "./NewBubbleForm";
 import APImap from "./API map";
 import Popup from "./PopUp";
 
-function NewBubble({ addBubble }) {
+function NewBubble({ addBubble, bubbles }) {
   const [firstname, setFirstname] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
@@ -58,7 +58,8 @@ function NewBubble({ addBubble }) {
     console.log(
       `A request has been logged: 
         From ${firstname} with ${workstations} spots and WIFI ${wifi}
-        `
+        
+        "And heres the bubble data from the backend",`, {bubbles}
     );
     let newBubbleData = {
       firstname,
@@ -97,7 +98,7 @@ function NewBubble({ addBubble }) {
       <form onSubmit={handleSubmit}>
         Create a new Bubble
         <NewBubbleForm
-          name={name}
+          firstname={firstname}
           location={location}
           workstations={workstations}
           handleChange={handleChange}
@@ -108,32 +109,7 @@ function NewBubble({ addBubble }) {
           wheelchair={wheelchair}
           smoking={smoking}
 
-          // {(
-          //   ownername,
-          //   place,
-          //   totalws,
-          //   wifi,
-          //   petfriendly,
-          //   kitchen,
-          //   quietspace,
-          //   smokerfriendly,
-          //   availablews,
-          //   wheelchairaccess,
-          //   usersinbubble
-          // ) =>
-          //   addBubble(
-          //     ownername,
-          //     place,
-          //     totalws,
-          //     wifi,
-          //     petfriendly,
-          //     kitchen,
-          //     quietspace,
-          //     smokerfriendly,
-          //     availablews,
-          //     wheelchairaccess,
-          //     usersinbubble
-          //   )
+      
         />
         <button
           id="buttonCreateBubble"
@@ -147,6 +123,7 @@ function NewBubble({ addBubble }) {
             <Popup
               content={
                 <>
+                  {/* {bubbles.map(bubbles => <div> <h1>{bubbles}</h1> </div>)} */}
                   <h2>Your new bubble has been created</h2>
                   <p>Welcome {bubble.name}</p>
                   <p>

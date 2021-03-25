@@ -8,7 +8,7 @@ import Login from "./Login";
 import Register from "./Register";
 // import AuthenticatedRoute from "./AuthenticatedRoute";
 
-function Routes({ getBubbles, addBubble, bubble }) {
+function Routes({ getBubbles, addBubble, deleteBubble, bubbles }) {
   return (
     <Switch>
       {/* Home: Use 'exact' or else this route will match EVERYTHING */}
@@ -17,7 +17,11 @@ function Routes({ getBubbles, addBubble, bubble }) {
       </Route>
 
       <Route exact path="/new-bubble">
-        <NewBubble getBubbles={getBubbles} addBubble={addBubble} bubble={bubble}/>
+        <NewBubble
+          getBubbles={getBubbles}
+          addBubble={addBubble}
+          bubbles={bubbles}
+        />
         {/* render = {() => <NewBubble showNewBubble={props.showNewBubble()}/>}> */}
       </Route>
 
@@ -34,11 +38,9 @@ function Routes({ getBubbles, addBubble, bubble }) {
       </Route>
 
       <Route exact path="/new-bubble-created">
-        <MapWithNewBubble bubble={bubble} />
+        <MapWithNewBubble bubbles={bubbles} />
       </Route>
-      <Route>
-        {/* <AuthenticatedRoute /> */}
-      </Route>
+      <Route>{/* <AuthenticatedRoute /> */}</Route>
     </Switch>
   );
 }

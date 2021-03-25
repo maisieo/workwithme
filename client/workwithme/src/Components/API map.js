@@ -65,7 +65,7 @@ function APImap() {
               // 50.8503 , -4.3517
             ]}
           >
-            <Popup>Buuble 1</Popup>
+            <Popup>Bubble 1</Popup>
           </Marker>
         </MapContainer>
       )}

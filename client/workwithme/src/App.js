@@ -1,5 +1,5 @@
 // import { latLng } from "leaflet";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 // the code below is for checking if users are being authorized to use the app
@@ -14,9 +14,11 @@ import Routes from "./Components/Routes";
 function App() {
   // const history = useHistory();
 
-  const [user, setUser] = useState(Local.getUser());
+  // const [user, setUser] = useState(Local.getUser());
   // const [loginErrorMsg, setLoginErrorMsg] = useState("");
-  const [bubbles, setBubbles] = useState([]);
+  let [error, setError] = useState(null);
+  let [bubbles, setBubbles] = useState([]);
+
   useEffect(() => {
     getBubbles();
   }, []);
@@ -51,33 +53,30 @@ function App() {
       });
   }
 
-  //Adds a walk to the database
   function addBubble(
-    ownername,
-    place,
-    totalws,
+    name,
+    handleChange,
+    location,
+    workstations,
     wifi,
     petfriendly,
     kitchen,
     quietspace,
-    smokerfriendly,
-    availablews,
-    wheelchairaccess,
-    usersinbubble
+    wheelchair,
+    smoking
   ) {
     let newBubble = {
-      ownername,
-      place,
-      totalws,
+      name,
+      handleChange,
+      location,
+      workstations,
       wifi,
       petfriendly,
       kitchen,
       quietspace,
-      smokerfriendly,
-      availablews,
-      wheelchairaccess,
-      usersinbubble
-      }; console.log("This is new bubble", newBubble)
+      wheelchair,
+      smoking,
+    };
     let options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -88,48 +87,22 @@ function App() {
       .then((result) => result.json())
       .then((bubbles) => {
         setBubbles(bubbles);
-        console.log("parent")
       })
       .catch((err) => {
         console.log("error!", err.message);
       });
   }
 
-  // async function doLogin(username, password) {
-  //     let response = await Api.loginUser(username, password);
-  //     if (response.ok) {
-  //         Local.saveUserInfo(response.data.token, response.data.user);
-  //         setUser(response.data.user);
-  //         setLoginErrorMsg('');
-  //         history.push('/');
-  //     } else {
-  //         setLoginErrorMsg('Login failed');
-  //     }
-  // }
-
-  //const [bubble, setBubble] = useState([{name: "Julie", workstations: ""}]);
-  // let history = useHistory();
-
-  // function showNewBubble(newBubbleData) {
-  //   // event.preventDefault();
-  //   console.log("New bubble is back to app", newBubbleData)
-  //   setBubble(newBubbleData)
-  //   // history.push("/new-bubble-created");
-  // }
-
-  //code to get, add and delete bubbles from databaase
-  //code to get, add and delete bubbles from databaase to add a new bubble into database from the form
-
   return (
     <div className="App">
       <div>
         <Navbar />
-        <Routes addBubble = {addBubble}
-         bubbles={bubbles}
-        getBubbles = {getBubbles}
-        // showNewBubble={()=>showNewBubble}
-        // bubble={bubble}
-        // doLogin={doLogin}
+        <Routes
+          getBubbles={getBubbles}
+          addBubble={addBubble}
+          deleteBubble={deleteBubble}
+          bubbles={bubbles}
+          // doLogin={doLogin}
         />
       </div>
     </div>
@@ -137,3 +110,25 @@ function App() {
 }
 
 export default App;
+
+// async function doLogin(username, password) {
+//     let response = await Api.loginUser(username, password);
+//     if (response.ok) {
+//         Local.saveUserInfo(response.data.token, response.data.user);
+//         setUser(response.data.user);
+//         setLoginErrorMsg('');
+//         history.push('/');
+//     } else {
+//         setLoginErrorMsg('Login failed');
+//     }
+// }
+
+// function showNewBubble(newBubbleData) {
+//   // event.preventDefault();
+//   console.log("New bubble is back to app", newBubbleData)
+//   setBubble(newBubbleData)
+//   // history.push("/new-bubble-created");
+// }
+
+//code to get, add and delete bubbles from databaase
+//code to get, add and delete bubbles from databaase to add a new bubble into database from the form
