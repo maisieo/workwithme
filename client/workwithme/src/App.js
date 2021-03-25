@@ -48,7 +48,7 @@ function App() {
   }, []);
 
   //function to get the walks from the database
-  const getbubbles = () => {
+  const getBubbles = () => {
     fetch("/bubbles")
       .then(result => result.json())
       .then(bubbles => {
@@ -89,7 +89,7 @@ function App() {
     availablews,
     wheelchairaccess,
     usersinbubble,) {
-    let newBubbleData = {ownername,
+    let newBubble = {ownername,
       place,
       totalws,
       wifi,
@@ -109,7 +109,7 @@ function App() {
     fetch("/bubbles", options)
       .then(result => result.json())
       .then(bubbles => {
-        setWalks(bubbles);
+        setBubbles(bubbles);
       })
       .catch(err => {
         console.log("error!", err.message);
