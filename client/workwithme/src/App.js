@@ -1,7 +1,7 @@
 // import { latLng } from "leaflet";
 import React, { useState, useEffect } from "react";
 import "./App.css";
-
+import Table from "react-bootstrap/Table";
 // the code below is for checking if users are being authorized to use the app
 import Local from "./Components/helpers/Local";
 import Api from "./Components/helpers/Api";
@@ -18,7 +18,7 @@ function App() {
   // const [loginErrorMsg, setLoginErrorMsg] = useState("");
   let [error, setError] = useState(null);
   let [bubbles, setBubbles] = useState([]);
-
+ 
   useEffect(() => {
     getBubbles();
   }, []);
@@ -92,20 +92,23 @@ function App() {
         console.log("error!", err.message);
       });
   }
-
+ 
   return (
     <div className="App">
-      <div>
-        <Navbar />
-        <Routes
-          getBubbles={getBubbles}
-          addBubble={addBubble}
-          deleteBubble={deleteBubble}
-          bubbles={bubbles}
-          // doLogin={doLogin}
-        />
+          <Navbar/>
+          {/* <div>
+        <ul>{bubbles.map(b=>(<li> Firstname: {b.firstname}, Workstations: {b.workstations}</li>))}</ul>
+          </div> */}
+           <Routes
+        getBubbles={getBubbles}
+        addBubble={addBubble}
+        deleteBubble={deleteBubble}
+        bubbles={bubbles}
+        // bubbles={bubbles}
+        // doLogin={doLogin}
+      />
       </div>
-    </div>
+    
   );
 }
 

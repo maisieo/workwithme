@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import NewBubbleForm from "./NewBubbleForm";
-import APImap from "./API map";
+// import APImap from "./API map";
 import Popup from "./PopUp";
-
-function NewBubble({ addBubble, bubbles }) {
-  const [firstname, setFirstname] = React.useState("");
+function NewBubble(props) {
+  const [name, setName] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
   // const [isChecked , setIsChecked] = useState(false)
@@ -14,15 +13,14 @@ function NewBubble({ addBubble, bubbles }) {
   const [quietspace, setQuietspace] = React.useState(false);
   const [wheelchair, setWheelchair] = React.useState(false);
   const [smoking, setSmoking] = React.useState(false);
-  const [bubble, setBubble] = useState([]);
+  const [bubble, setBubble] = useState([{ name: "Julie", workstations: "" }]);
   const [isOpen, setIsOpen] = useState(false);
-
   function handleChange(event) {
     // console.log('event: ', event)
-    // console.log(event.target.checked);
+    //console.log(event.target.checked);
     switch (event.target.name) {
-      case "firstname":
-        setFirstname(event.target.value);
+      case "name":
+        setName(event.target.value);
         break;
       case "location":
         setLocation(event.target.value);
@@ -52,34 +50,37 @@ function NewBubble({ addBubble, bubbles }) {
         break;
     }
   }
-
+  const handleWifi = () => setWifi(!wifi)
+  const handleKitchen = () => setKitchen(!kitchen)
+  const handlePet = () => setPetfriendly(!petfriendly)
+  const handleQuiet = () => setQuietspace(!quietspace)
+  const handleWheelchair = () => setWheelchair(!wheelchair)
+  const handleSmoking = () => setSmoking(!smoking)
+  //defining Global variable
+  let newBubbleData = {
+    name,
+    location,
+    workstations,
+    wifi,
+    petfriendly,
+    kitchen,
+    quietspace,
+    wheelchair,
+    smoking,
+  };
   function handleSubmit(event) {
     event.preventDefault();
     console.log(
-      `A request has been logged: 
-        From ${firstname} with ${workstations} spots and WIFI ${wifi}
-        
-        "And heres the bubble data from the backend",`, {bubbles}
+      `A request has been logged:
+        From ${name} with ${workstations} spots and WIFI ${wifi}
+        `
     );
-    let newBubbleData = {
-      firstname,
-      location,
-      workstations,
-      wifi,
-      petfriendly,
-      kitchen,
-      quietspace,
-      wheelchair,
-      smoking,
-    };
-
-    //props.showNewBubble(newBubbleData);
     setBubble(newBubbleData);
     console.log("New bubble", newBubbleData);
-    setFirstname("");
+    setName("");
     setLocation("");
     setWorkstations("");
-    setWifi("");
+    setWifi(!wifi);
     setPetfriendly("");
     setKitchen("");
     setQuietspace("");
@@ -88,28 +89,30 @@ function NewBubble({ addBubble, bubbles }) {
     // the submission event would then add the new bubble to the backend tables
     // the map would then be returned with the new bubble on it
   }
-
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <div className="NewBubble">
       <form onSubmit={handleSubmit}>
         Create a new Bubble
         <NewBubbleForm
-          firstname={firstname}
+          name={name}
           location={location}
           workstations={workstations}
           handleChange={handleChange}
+          handleWifi={handleWifi}
+          handleKitchen={handleKitchen}
+          handleQuiet={handleQuiet}
+          handlePet={handlePet}
+          handleWheelchair={handleWheelchair}
+          handleSmoking={handleSmoking}
           wifi={wifi}
           petfriendly={petfriendly}
           kitchen={kitchen}
           quietspace={quietspace}
           wheelchair={wheelchair}
           smoking={smoking}
-
-      
         />
         <button
           id="buttonCreateBubble"
@@ -123,37 +126,27 @@ function NewBubble({ addBubble, bubbles }) {
             <Popup
               content={
                 <>
-                  {/* {bubbles.map(bubbles => <div> <h1>{bubbles}</h1> </div>)} */}
                   <h2>Your new bubble has been created</h2>
                   <p>Welcome {bubble.name}</p>
                   <p>
                     {" "}
-                    Your bubble has {bubble.workstations} workstation(s) to
-                    {bubble.wifi} bubble wifi {bubble.kitchen}bubble kitchen{" "}
-                    {bubble.kitchen}
-                    offer{" "}
+                    Your bubble has {bubble.workstations} workstation(s) to offer{" "}
                   </p>
                   <h1> Features </h1>
                   <p>
-                    <span> Wifi: {(bubble.wifi = "true" ? "Yes" : "No")}</span>
+                    <span> Wifi: {
+                    bubble.wifi === true  ? "Yes" : "/"
+                    }</span>
                     <span>
                       {" "}
-                      Pet Friendly:{" "}
-                      {(bubble.petfriendly = "true" ? "Yes" : "No")}
+                      Pet Friendly: {bubble.petfriendly === true ? "Yes" : "/"}
                     </span>
+                    <span>Kitchen Access: {bubble.kitchen === true ?  "Yes" : "/"}</span>
+                    <span>Quiet Space: {bubble.quietspace === true ? "Yes" : "/"}</span>
                     <span>
-                      Kitchen Access: {(bubble.kitchen = "true" ? "Yes" : "No")}
+                      Wheelchair Access: {bubble.wheelchair === true ?  "Yes" : "/"}
                     </span>
-                    <span>
-                      Quiet Space: {(bubble.quietspace = "true" ? "Yes" : "No")}
-                    </span>
-                    <span>
-                      Wheelchair Access:{" "}
-                      {(bubble.wheelchair = "true" ? "Yes" : "No")}
-                    </span>
-                    <span>
-                      Smoking Corner {(bubble.smoking = "true" ? "Yes" : "No")}
-                    </span>
+                    <span>Smoking Corner {bubble.smoking === true ?  "Yes" : "/"}</span>
                   </p>
                 </>
               }
@@ -165,5 +158,4 @@ function NewBubble({ addBubble, bubbles }) {
     </div>
   );
 }
-
 export default NewBubble;

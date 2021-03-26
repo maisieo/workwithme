@@ -6,9 +6,10 @@ import JoinBubble from "./JoinBubble";
 import MapWithNewBubble from "./MapWithNewBubble";
 import Login from "./Login";
 import Register from "./Register";
+
 // import AuthenticatedRoute from "./AuthenticatedRoute";
 
-function Routes({ getBubbles, addBubble, deleteBubble, bubbles }) {
+function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
   return (
     <Switch>
       {/* Home: Use 'exact' or else this route will match EVERYTHING */}
@@ -26,7 +27,7 @@ function Routes({ getBubbles, addBubble, deleteBubble, bubbles }) {
       </Route>
 
       <Route exact path="/join-bubble">
-        <JoinBubble />
+        <JoinBubble bubbles={bubbles}/>
       </Route>
 
       <Route path="/login" exact>
@@ -40,6 +41,7 @@ function Routes({ getBubbles, addBubble, deleteBubble, bubbles }) {
       <Route exact path="/new-bubble-created">
         <MapWithNewBubble bubbles={bubbles} />
       </Route>
+
       <Route>{/* <AuthenticatedRoute /> */}</Route>
     </Switch>
   );
