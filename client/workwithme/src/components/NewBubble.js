@@ -73,10 +73,11 @@ function NewBubble(props) {
     console.log(
       `A request has been logged:
         From ${name} with ${workstations} spots and WIFI ${wifi}
-        `
+                "This is new bubble data", ${newBubbleData}`
     );
     setBubble(newBubbleData);
     console.log("New bubble", newBubbleData);
+    props.addBubble(newBubbleData);
     setName("");
     setLocation("");
     setWorkstations("");
@@ -86,6 +87,7 @@ function NewBubble(props) {
     setQuietspace("");
     setWheelchair("");
     setSmoking("");
+     // onSubmit={(newBubbleData) => addBubble(newBubbleData)}
     // the submission event would then add the new bubble to the backend tables
     // the map would then be returned with the new bubble on it
   }
@@ -94,7 +96,7 @@ function NewBubble(props) {
   };
   return (
     <div className="NewBubble">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         Create a new Bubble
         <NewBubbleForm
           name={name}
@@ -113,12 +115,14 @@ function NewBubble(props) {
           quietspace={quietspace}
           wheelchair={wheelchair}
           smoking={smoking}
+          // onSubmit={(newBubbleData) => addBubble(newBubbleData)}
         />
         <button
           id="buttonCreateBubble"
           type="submit"
           value="Click to Open Popup"
           onClick={togglePopup}
+         
         >
           {" "}
           Create a bubble{" "}

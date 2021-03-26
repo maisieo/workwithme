@@ -13,7 +13,6 @@ import Routes from "./Components/Routes";
 
 function App() {
   // const history = useHistory();
-
   // const [user, setUser] = useState(Local.getUser());
   // const [loginErrorMsg, setLoginErrorMsg] = useState("");
   let [error, setError] = useState(null);
@@ -53,7 +52,7 @@ function App() {
       });
   }
 
-  function addBubble(
+  function addBubble(   
     name,
     handleChange,
     location,
@@ -93,6 +92,8 @@ function App() {
       });
   }
  
+  
+  
   return (
     <div className="App">
           <Navbar/>
@@ -101,7 +102,7 @@ function App() {
           </div> */}
            <Routes
         getBubbles={getBubbles}
-        addBubble={addBubble}
+        addBubble={() => addBubble}
         deleteBubble={deleteBubble}
         bubbles={bubbles}
         // bubbles={bubbles}

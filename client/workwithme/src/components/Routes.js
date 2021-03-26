@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React} from "react";
 import { Route, Switch } from "react-router-dom";
 import HomeView from "./HomeView";
 import NewBubble from "./NewBubble";
@@ -6,6 +6,7 @@ import JoinBubble from "./JoinBubble";
 import MapWithNewBubble from "./MapWithNewBubble";
 import Login from "./Login";
 import Register from "./Register";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 // import AuthenticatedRoute from "./AuthenticatedRoute";
 
@@ -20,8 +21,9 @@ function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
       <Route exact path="/new-bubble">
         <NewBubble
           getBubbles={getBubbles}
-          addBubble={addBubble}
+
           bubbles={bubbles}
+          addBubble = {addBubble()}
         />
         {/* render = {() => <NewBubble showNewBubble={props.showNewBubble()}/>}> */}
       </Route>

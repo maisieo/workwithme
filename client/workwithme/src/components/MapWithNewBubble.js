@@ -1,5 +1,4 @@
 import React from 'react';
-import APImap from './API map';
 
 const MapWithNewBubble = props => {
     return (
