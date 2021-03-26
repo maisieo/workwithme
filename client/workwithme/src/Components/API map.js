@@ -11,14 +11,16 @@ function APImap({bubbles}) {
   const [markers, setMarkers] = useState([]);
 
 
-let locationOfBubbles = bubbles.map(b=> [b.location]);
-console.log("These are the locations", locationOfBubbles)
+// let locationOfBubbles = bubbles.map(b=> [b.location]);
+// console.log("These are the locations", locationOfBubbles);
 
 //turn locations from database into markers!
 
 // const batchGeoCode 
 //for location in locationOfBubbles. add code that will be added to the url, so like "location={location}" OK YES
 //THIS IS IT
+
+//define a function for turning the database locations into an array of coordinates
 
 
 

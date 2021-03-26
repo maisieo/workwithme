@@ -3,7 +3,7 @@ import NewBubbleForm from "./NewBubbleForm";
 // import APImap from "./API map";
 import Popup from "./PopUp";
 function NewBubble(props) {
-  const [name, setName] = React.useState("");
+  const [firstname, setName] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
   // const [isChecked , setIsChecked] = useState(false)
@@ -13,38 +13,40 @@ function NewBubble(props) {
   const [quietspace, setQuietspace] = React.useState(false);
   const [wheelchair, setWheelchair] = React.useState(false);
   const [smoking, setSmoking] = React.useState(false);
-  const [bubble, setBubble] = useState([{ name: "Julie", workstations: "" }]);
+  const [bubble, setBubble] = useState([{ firstname: "Julie", workstations: "" }]);
   const [isOpen, setIsOpen] = useState(false);
+  //none of these hooks are being used, only "bubble". Not all hooks are needed.
   function handleChange(event) {
     // console.log('event: ', event)
+    let {name, value, checked} = event.target;
     //console.log(event.target.checked);
-    switch (event.target.name) {
-      case "name":
-        setName(event.target.value);
+    switch (name) {
+      case "firstname":
+        setName(value);
         break;
       case "location":
-        setLocation(event.target.value);
+        setLocation(value);
         break;
       case "workstations":
-        setWorkstations(event.target.value);
+        setWorkstations(value);
         break;
       case "wifi":
-        setWifi(event.target.checked);
+        setWifi(checked);
         break;
       case "petfriendly":
-        setPetfriendly(event.target.checked);
+        setPetfriendly(checked);
         break;
       case "kitchen":
-        setKitchen(event.target.checked);
+        setKitchen(checked);
         break;
       case "quietspace":
-        setQuietspace(event.target.checked);
+        setQuietspace(checked);
         break;
       case "wheelchair":
-        setWheelchair(event.target.checked);
+        setWheelchair(checked);
         break;
       case "smoking":
-        setSmoking(event.target.checked);
+        setSmoking(checked);
         break;
       default:
         break;
@@ -58,7 +60,7 @@ function NewBubble(props) {
   const handleSmoking = () => setSmoking(!smoking)
   //defining Global variable
   let newBubbleData = {
-    name,
+    firstname,
     location,
     workstations,
     wifi,
@@ -72,7 +74,7 @@ function NewBubble(props) {
     event.preventDefault();
     console.log(
       `A request has been logged:
-        From ${name} with ${workstations} spots and WIFI ${wifi}
+        From ${firstname} with ${workstations} spots and WIFI ${wifi}
                 "This is new bubble data", ${newBubbleData}`
     );
     setBubble(newBubbleData);
@@ -99,7 +101,7 @@ function NewBubble(props) {
       <form onSubmit={handleSubmit} >
         Create a new Bubble
         <NewBubbleForm
-          name={name}
+          firstname={firstname}
           location={location}
           workstations={workstations}
           handleChange={handleChange}
@@ -131,7 +133,7 @@ function NewBubble(props) {
               content={
                 <>
                   <h2>Your new bubble has been created</h2>
-                  <p>Welcome {bubble.name}</p>
+                  <p>Welcome {bubble.firstname}</p>
                   <p>
                     {" "}
                     Your bubble has {bubble.workstations} workstation(s) to offer{" "}

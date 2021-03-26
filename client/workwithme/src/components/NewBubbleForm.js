@@ -1,6 +1,6 @@
 import React from "react";
 const NewBubbleForm = ({
-  name,
+  firstname,
   handleChange,
   handleWifi,
   handleKitchen,
@@ -22,9 +22,9 @@ const NewBubbleForm = ({
       {" "}
       Name
       <input
-        name="name"
+        name="firstname"
         type="text"
-        value={name}
+        value={firstname}
         onChange={handleChange}
         required
         autoComplete="nope"

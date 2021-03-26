@@ -6,14 +6,14 @@ const db = require("../model/helper");
 router.use(bodyParser.json());
 
 // GET all bubbles
-router.get("/bubbles", async (req, res) => {
-  try {
-    let results = await db("SELECT * FROM bubbles");
-    res.send(results.data);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     let results = await db("SELECT * FROM bubbles");
+//     res.send(results.data);
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
 
 router.get("/", async (req, res) => {
   try {
@@ -34,7 +34,7 @@ router.get("/", async (req, res) => {
 });
 
 // GET one bubble
-router.get("/bubbles/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   let id = req.params.id;
   try {
     let sql = `SELECT * FROM bubbles WHERE id = ${id}`; //mysql statement
@@ -51,12 +51,13 @@ router.get("/bubbles/:id", async (req, res, next) => {
 });
 
 // INSERT a new bubble into the DB
-router.post("/bubbles", async (req, res) => {
+router.post("/", async (req, res) => {
   let { firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking } = req.body;
   let sql = `
   INSERT INTO bubbles (firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking)
-  VALUES (${firstname}, ${location}, ${workstations}, ${wifi}, ${petfriendly}, ${kitchen}, ${quietspace}, ${wheelchair}, ${smoking})
+  VALUES ('${firstname}', '${location}', ${workstations}, ${wifi}, ${petfriendly}, ${kitchen}, ${quietspace}, ${wheelchair}, ${smoking})
   `;
+ 
   try {
     let results = await db(sql);
     results = await db("SELECT * FROM bubbles");
@@ -67,7 +68,7 @@ router.post("/bubbles", async (req, res) => {
 });
 
 // DELETE a bubble from the DB
-router.delete("/bubbles/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   let id = req.params.id;
   try {
     let sql = `SELECT * FROM bubbles WHERE id = ${id}`;

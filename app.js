@@ -24,7 +24,7 @@ app.use("/", authRouter);
 app.use("/", indexRouter);
 // app.use("/users", usersRouter);
 app.use("/bubbles", bubblesRouter);
-app.get("/bubbles", bubblesRouter);
+// app.get("/bubbles", bubblesRouter);
 
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
