@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import APImap from "./API map"
-
 function MapBubbleForm(props) {
   const [location, setLocation] = useState("");
 

@@ -1,8 +1,13 @@
 import React from "react";
-
 const NewBubbleForm = ({
-  name,
+  firstname,
   handleChange,
+  handleWifi,
+  handleKitchen,
+  handlePet,
+  handleQuiet,
+  handleWheelchair,
+  handleSmoking,
   location,
   workstations,
   wifi,
@@ -17,15 +22,14 @@ const NewBubbleForm = ({
       {" "}
       Name
       <input
-        name="name"
+        name="firstname"
         type="text"
-        value={name}
+        value={firstname}
         onChange={handleChange}
         required
         autoComplete="nope"
       ></input>
     </label>
-
     <label>
       {" "}
       Location
@@ -37,8 +41,7 @@ const NewBubbleForm = ({
         required
         autoComplete="nope"
       ></input>
-      
-    </label> 
+    </label>
     <label>
       {" "}
       How many workstations do you offer?
@@ -55,13 +58,12 @@ const NewBubbleForm = ({
         <option id="four">4</option>
       </select>
     </label>
-
     <label>
       Which features does your bubble have?
       <span>
         {" "}
         Wifi
-        <input type="checkbox" onChange={handleChange} value={wifi} />
+        <input type="checkbox" onClick={handleWifi} value={wifi} />
       </span>
       <span>
         {" "}
@@ -69,13 +71,14 @@ const NewBubbleForm = ({
         <input
           type="checkbox"
           value={petfriendly}
+          onClick={handlePet}
           onChange={handleChange}
         ></input>
       </span>
       <span>
         {" "}
         Access to kitchen
-        <input type="checkbox" value={kitchen} onChange={handleChange}></input>
+        <input type="checkbox" value={kitchen} onClick={handleKitchen}></input>
       </span>
       <span>
         {" "}
@@ -84,6 +87,7 @@ const NewBubbleForm = ({
           type="checkbox"
           value={quietspace}
           onChange={handleChange}
+          onClick={handleQuiet}
         ></input>
       </span>
       <span>
@@ -93,15 +97,15 @@ const NewBubbleForm = ({
           type="checkbox"
           value={wheelchair}
           onChange={handleChange}
+          onClick={handleWheelchair}
         ></input>
       </span>
       <span>
         {" "}
         Smoking corner
-        <input type="checkbox" value={smoking} onChange={handleChange}></input>
+        <input type="checkbox" value={smoking} onChange={handleChange} onClick={handleSmoking}></input>
       </span>
     </label>
   </div>
 );
-
 export default NewBubbleForm;

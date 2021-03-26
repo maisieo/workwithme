@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import NewBubbleForm from "./NewBubbleForm";
-import APImap from "./API map";
+// import APImap from "./API map";
 import Popup from "./PopUp";
-
 function NewBubble(props) {
-  const [name, setName] = React.useState("");
+  const [firstname, setName] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
   // const [isChecked , setIsChecked] = useState(false)
@@ -14,104 +13,118 @@ function NewBubble(props) {
   const [quietspace, setQuietspace] = React.useState(false);
   const [wheelchair, setWheelchair] = React.useState(false);
   const [smoking, setSmoking] = React.useState(false);
-  const [bubble, setBubble] = useState([{ name: "Julie", workstations: "" }]);
+  const [bubble, setBubble] = useState([{ firstname: "Julie", workstations: "" }]);
   const [isOpen, setIsOpen] = useState(false);
-
+  //none of these hooks are being used, only "bubble". Not all hooks are needed.
   function handleChange(event) {
     // console.log('event: ', event)
-    console.log(event.target.checked);
-    switch (event.target.name) {
-      case "name":
-        setName(event.target.value);
+    let {name, value, checked} = event.target;
+    //console.log(event.target.checked);
+    switch (name) {
+      case "firstname":
+        setName(value);
         break;
       case "location":
-        setLocation(event.target.value);
+        setLocation(value);
         break;
       case "workstations":
-        setWorkstations(event.target.value);
+        setWorkstations(value);
         break;
       case "wifi":
-        setWifi(event.target.checked);
+        setWifi(checked);
         break;
       case "petfriendly":
-        setPetfriendly(event.target.checked);
+        setPetfriendly(checked);
         break;
       case "kitchen":
-        setKitchen(event.target.checked);
+        setKitchen(checked);
         break;
       case "quietspace":
-        setQuietspace(event.target.checked);
+        setQuietspace(checked);
         break;
       case "wheelchair":
-        setWheelchair(event.target.checked);
+        setWheelchair(checked);
         break;
       case "smoking":
-        setSmoking(event.target.checked);
+        setSmoking(checked);
         break;
       default:
         break;
     }
   }
-
+  const handleWifi = () => setWifi(!wifi)
+  const handleKitchen = () => setKitchen(!kitchen)
+  const handlePet = () => setPetfriendly(!petfriendly)
+  const handleQuiet = () => setQuietspace(!quietspace)
+  const handleWheelchair = () => setWheelchair(!wheelchair)
+  const handleSmoking = () => setSmoking(!smoking)
+  //defining Global variable
+  let newBubbleData = {
+    firstname,
+    location,
+    workstations,
+    wifi,
+    petfriendly,
+    kitchen,
+    quietspace,
+    wheelchair,
+    smoking,
+  };
   function handleSubmit(event) {
     event.preventDefault();
     console.log(
-      `A request has been logged: 
-        From ${name} with ${workstations} spots and WIFI ${wifi}
-        `
+      `A request has been logged:
+        From ${firstname} with ${workstations} spots and WIFI ${wifi}
+                "This is new bubble data", ${newBubbleData}`
     );
-    let newBubbleData = {
-      name,
-      location,
-      workstations,
-      wifi,
-      petfriendly,
-      kitchen,
-      quietspace,
-      wheelchair,
-      smoking,
-    };
-    //props.showNewBubble(newBubbleData);
     setBubble(newBubbleData);
     console.log("New bubble", newBubbleData);
+    props.addBubble(newBubbleData);
     setName("");
     setLocation("");
     setWorkstations("");
-    setWifi("");
+    setWifi(!wifi);
     setPetfriendly("");
     setKitchen("");
     setQuietspace("");
     setWheelchair("");
     setSmoking("");
+     // onSubmit={(newBubbleData) => addBubble(newBubbleData)}
     // the submission event would then add the new bubble to the backend tables
     // the map would then be returned with the new bubble on it
   }
-
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <div className="NewBubble">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         Create a new Bubble
         <NewBubbleForm
-          name={name}
+          firstname={firstname}
           location={location}
           workstations={workstations}
           handleChange={handleChange}
+          handleWifi={handleWifi}
+          handleKitchen={handleKitchen}
+          handleQuiet={handleQuiet}
+          handlePet={handlePet}
+          handleWheelchair={handleWheelchair}
+          handleSmoking={handleSmoking}
           wifi={wifi}
           petfriendly={petfriendly}
           kitchen={kitchen}
           quietspace={quietspace}
           wheelchair={wheelchair}
           smoking={smoking}
+          // onSubmit={(newBubbleData) => addBubble(newBubbleData)}
         />
         <button
           id="buttonCreateBubble"
           type="submit"
           value="Click to Open Popup"
           onClick={togglePopup}
+         
         >
           {" "}
           Create a bubble{" "}
@@ -120,26 +133,26 @@ function NewBubble(props) {
               content={
                 <>
                   <h2>Your new bubble has been created</h2>
-                  <p>Welcome {bubble.name}</p>
+                  <p>Welcome {bubble.firstname}</p>
                   <p>
                     {" "}
-                    Your bubble has {bubble.workstations} workstation(s) to
-                    {bubble.wifi} bubble wifi {bubble.kitchen}bubble kitchen {bubble.kitchen}
-                    offer{" "}
+                    Your bubble has {bubble.workstations} workstation(s) to offer{" "}
                   </p>
                   <h1> Features </h1>
                   <p>
-                    <span> Wifi: {bubble.wifi = "true" ? "Yes" : "No"}</span>
+                    <span> Wifi: {
+                    bubble.wifi === true  ? "Yes" : "/"
+                    }</span>
                     <span>
                       {" "}
-                      Pet Friendly: {bubble.petfriendly = "true" ? "Yes" : "No"}
+                      Pet Friendly: {bubble.petfriendly === true ? "Yes" : "/"}
                     </span>
-                    <span>Kitchen Access: {bubble.kitchen = "true" ?  "Yes" : "No"}</span>
-                    <span>Quiet Space: {bubble.quietspace = "true" ? "Yes" : "No"}</span>
+                    <span>Kitchen Access: {bubble.kitchen === true ?  "Yes" : "/"}</span>
+                    <span>Quiet Space: {bubble.quietspace === true ? "Yes" : "/"}</span>
                     <span>
-                      Wheelchair Access: {bubble.wheelchair = "true" ?  "Yes" : "No"}
+                      Wheelchair Access: {bubble.wheelchair === true ?  "Yes" : "/"}
                     </span>
-                    <span>Smoking Corner {bubble.smoking = "true" ?  "Yes" : "No"}</span>
+                    <span>Smoking Corner {bubble.smoking === true ?  "Yes" : "/"}</span>
                   </p>
                 </>
               }
@@ -151,5 +164,4 @@ function NewBubble(props) {
     </div>
   );
 }
-
 export default NewBubble;
