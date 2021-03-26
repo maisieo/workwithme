@@ -54,8 +54,7 @@ function App() {
   }
 
   function addBubble(
-    name,
-    handleChange,
+    firstname,
     location,
     workstations,
     wifi,
@@ -66,8 +65,7 @@ function App() {
     smoking
   ) {
     let newBubble = {
-      name,
-      handleChange,
+      firstname,
       location,
       workstations,
       wifi,
