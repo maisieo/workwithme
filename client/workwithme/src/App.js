@@ -53,8 +53,7 @@ function App() {
       });
   }
 
-  function addBubble(
-    firstname,
+  function addBubble(firstname,
     location,
     workstations,
     wifi,
@@ -62,8 +61,9 @@ function App() {
     kitchen,
     quietspace,
     wheelchair,
-    smoking
-  ) {
+    smoking) 
+  
+  { 
     let newBubble = {
       firstname,
       location,
@@ -73,8 +73,9 @@ function App() {
       kitchen,
       quietspace,
       wheelchair,
-      smoking,
-    };
+      smoking
+    };   
+
     let options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -82,14 +83,19 @@ function App() {
       body: JSON.stringify(newBubble), //object needs to converted to json (with stringify)
     };
     fetch("/bubbles", options)
-      .then((result) => result.json())
-      .then((bubbles) => {
+      .then(result => result.json())
+      .then(bubbles => {
         setBubbles(bubbles);
+        console.log("Function add bubble is being called")
       })
       .catch((err) => {
         console.log("error!", err.message);
       });
   }
+
+  // function addBubble(data) {
+  //   console.log("This has been called on submit")
+  // }
  
   return (
     <div className="App">
@@ -99,7 +105,8 @@ function App() {
           </div> */}
            <Routes
         getBubbles={getBubbles}
-        addBubble={addBubble}
+        addBubble={() => addBubble}
+        // onSubmit={(firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking) => addBubble(firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking)}
         deleteBubble={deleteBubble}
         bubbles={bubbles}
         // bubbles={bubbles}

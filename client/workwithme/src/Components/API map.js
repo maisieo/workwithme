@@ -57,7 +57,7 @@ function APImap({bubbles}) {
   return (
     <div>
       <MapBubbleForm onSubmit={(location) => getData(location)} /><div>
-These are the locations <ul>{bubbles.map(b=>(<li>{b.location}</li>))}</ul></div>
+{/* These are the locations <ul>{bubbles.map(b=>(<li>{b.location}</li>))}</ul></div> */}
       {data && (
         <MapContainer
           center={[
@@ -83,6 +83,7 @@ These are the locations <ul>{bubbles.map(b=>(<li>{b.location}</li>))}</ul></div>
           // </Marker> */}
         </MapContainer>
       )}
+    </div>
     </div>
   );
 }

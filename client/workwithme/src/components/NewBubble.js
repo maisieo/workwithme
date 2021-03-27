@@ -3,7 +3,7 @@ import NewBubbleForm from "./NewBubbleForm";
 // import APImap from "./API map";
 import Popup from "./PopUp";
 function NewBubble(props) {
-  const [firstname, setName] = React.useState("");
+  const [firstname, setFirstname] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [workstations, setWorkstations] = useState(0);
   // const [isChecked , setIsChecked] = useState(false)
@@ -15,14 +15,14 @@ function NewBubble(props) {
   const [smoking, setSmoking] = React.useState(false);
   const [bubble, setBubble] = useState([{ firstname: "Julie", workstations: "" }]);
   const [isOpen, setIsOpen] = useState(false);
-  //none of these hooks are being used, only "bubble". Not all hooks are needed.
+  
   function handleChange(event) {
     // console.log('event: ', event)
     let {name, value, checked} = event.target;
     //console.log(event.target.checked);
     switch (name) {
       case "firstname":
-        setName(value);
+        setFirstname(value);
         break;
       case "location":
         setLocation(value);
@@ -69,7 +69,7 @@ function NewBubble(props) {
     quietspace,
     wheelchair,
     smoking,
-  };
+  }; console.log("before submit", firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking)
   function handleSubmit(event) {
     event.preventDefault();
     console.log(
@@ -79,11 +79,11 @@ function NewBubble(props) {
     );
     setBubble(newBubbleData);
     console.log("New bubble", newBubbleData);
-    props.addBubble(newBubbleData);
-    setName("");
+    props.addBubble(newBubbleData); console.log("After submit", firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking)
+    setFirstname("");
     setLocation("");
     setWorkstations("");
-    setWifi(!wifi);
+    setWifi("");
     setPetfriendly("");
     setKitchen("");
     setQuietspace("");

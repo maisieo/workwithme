@@ -5,13 +5,13 @@ import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 import APImap from "./API map";
 // have a state here that gets updates with the mapbubbleform
 
-function JoinBubble({ firstname, workstations, bubbles, newBubbleData}) {
+function JoinBubble({ bubbles }) {
   const [data, setData] = useState("");
-console.log(newBubbleData)
+
   return (
     <div className="NewBubble">
       <h3>Join an existing Bubble</h3>
-{/* 
+ 
       <ul>
         {bubbles.map((b) => (
           <li key={b.id}>
@@ -19,7 +19,7 @@ console.log(newBubbleData)
             Firstname: {b.firstname}, Workstations: {b.workstations}
           </li>
         ))}
-      </ul> */}
+      </ul> 
 
       <APImap data={data} bubbles={bubbles} />
     </div>
