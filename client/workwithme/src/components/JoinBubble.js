@@ -12,16 +12,7 @@ function JoinBubble({ bubbles }) {
     <div className="NewBubble">
       <h3>Join an existing Bubble</h3>
  
-      <ul>
-        {bubbles.map((b) => (
-          <li key={b.id}>
-            {" "}
-            Firstname: {b.firstname}, Workstations: {b.workstations}
-          </li>
-        ))}
-      </ul> 
-
-      <APImap data={data} bubbles={bubbles} />
+          <APImap data={data} bubbles={bubbles} />
     </div>
   );
 }
