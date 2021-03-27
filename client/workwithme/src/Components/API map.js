@@ -110,7 +110,7 @@ function APImap({ bubbles }) {
               data.results[0].locations[0].latLng.lng,
               // 50.8503 , -4.3517
             ]}
-            zoom={12}
+            zoom={14.5}
             scrollWheelZoom={true}
           >
             <TileLayer
