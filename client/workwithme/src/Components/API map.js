@@ -10,10 +10,13 @@ function APImap({ bubbles }) {
   const [dataLocations, setDataLocations] = useState("");
   const [error, setError] = useState("");
   const [markers, setMarkers] = useState([]);
+  let allBubblesData = null;
   let coordinatesOfLocations = [];
   let justArray = [];
   let resultsArray = [];
   let hopefullyFinal = null;
+  let bubbleData = [];
+  let array3 = [];
 
   useEffect(() => {
     // Update the document title using the browser API
@@ -23,6 +26,7 @@ function APImap({ bubbles }) {
   let URLpart = "";
   let locationOfBubbles = bubbles.map((b) => [b.location]);
   console.log("These are the locations", locationOfBubbles);
+  console.log("bubbles", bubbles)
 
   function getCoordinatesOfDB() {
     locationOfBubbles.forEach(
@@ -52,13 +56,16 @@ function APImap({ bubbles }) {
             location.locations[0].latLng.lng,
           ])
         );
-        justArray.push(Object.values(coordinatesOfLocations));
-        console.log("coordinates of locatinos", coordinatesOfLocations);
-        console.log("huhuh", justArray);
-        console.log("this is array[0]", justArray[0]);
+                justArray.push(Object.values(coordinatesOfLocations));
+        console.log("coordinates of locations", coordinatesOfLocations);
         hopefullyFinal = justArray[0];
         console.log("hope", hopefullyFinal);
-          setMarkers(hopefullyFinal);
+        bubbleData = bubbles.map((e) => [e.firstname, e.workstations]);
+        console.log("this is bubble data", bubbleData)
+        array3 = bubbleData.map((item, idx) => [...item, ...hopefullyFinal[idx]])
+        // for (let i=0; i <bubbleData.length; i++) {array3.push([...bubbleData[i],...hopefullyFinal[i]])}
+        console.log(array3, "this is array3")
+        setMarkers(hopefullyFinal);
           
       
         console.log("These are markrs", markers)
@@ -97,7 +104,7 @@ function APImap({ bubbles }) {
       setError(`Network error: ${err.message}`);
     }
   };
-
+let popupspeech;
   return (
     <div>
       <MapBubbleForm onSubmit={(location) => getData(location)} />
@@ -121,7 +128,8 @@ function APImap({ bubbles }) {
            {markers.map((position, idx) => 
           <Marker key={`marker-${idx}`} position={position}>
             <Popup>
-          <span>Hello world!</span>
+        
+          <span></span>
             </Popup>
           </Marker>
           //change the popup to include data about the bubble
