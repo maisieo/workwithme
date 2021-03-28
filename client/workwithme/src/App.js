@@ -1,7 +1,6 @@
 // import { latLng } from "leaflet";
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Table from "react-bootstrap/Table";
 // the code below is for checking if users are being authorized to use the app
 import Local from "./Components/helpers/Local";
 import Api from "./Components/helpers/Api";
@@ -9,6 +8,7 @@ import Api from "./Components/helpers/Api";
 // // import { Icon } from "leaflet";
 import Navbar from "./Components/Navbar";
 import Routes from "./Components/Routes";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import AuthenticatedRoute from "./Components/AuthenticatedRoute";
 
 function App() {
