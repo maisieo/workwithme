@@ -17,7 +17,7 @@ function Navbar1() {
             Create a bubble
           </ReactBootstrap.Nav.Link>
           <ReactBootstrap.Nav.Link href="join-bubble">
-            New bubble
+            Join a bubble
           </ReactBootstrap.Nav.Link>
         </ReactBootstrap.Nav>
         <ReactBootstrap.Button variant="outline-success" href="login">
