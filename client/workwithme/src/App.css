@@ -2,17 +2,11 @@
   text-align: center;
   background-color: #243441;
 }
-.App-header {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #282C34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
+#myBody {
+  background-color: #243441;
+    color: white;
+} 
 .App-link {
   color: #61DAFB;
 }

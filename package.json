@@ -27,5 +27,5 @@
     "react-leaflet": "^3.1.0",
     "react-router-dom": "^5.2.0"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000/"
 }

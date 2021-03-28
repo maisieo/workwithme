@@ -55,7 +55,7 @@ router.post("/", async (req, res) => {
   let { firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking } = req.body;
   let sql = `
   INSERT INTO bubbles (firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking)
-  VALUES ('${firstname}', '${location}', ${workstations}, ${wifi}, ${petfriendly}, ${kitchen}, ${quietspace}, ${wheelchair}, ${smoking})
+  VALUES ('${firstname}', '${location}', ${workstations}, '${wifi}', '${petfriendly}', '${kitchen}', '${quietspace}', '${wheelchair}', '${smoking}');
   `;
  
   try {

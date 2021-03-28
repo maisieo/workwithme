@@ -8,6 +8,7 @@ import Login from "./Login";
 import Register from "./Register";
 import { propTypes } from "react-bootstrap/esm/Image";
 import AuthenticatedRoute from "./AuthenticatedRoute";
+import CreateABubbleForm from "./CreateABubbleForm";
 
 async function doRegister(username, password, email) {
     let newUser = {username, password, email}
@@ -29,15 +30,12 @@ function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
       <Route path="/" exact>
         <HomeView />
       </Route>
+      {/* <Route exact path="/plant-sitter"
+            render = {() => <PlantSitterForm addSitter={props.addSitter()}/>}>
+            </Route> */}
 
-      <Route exact path="/new-bubble">
-        <NewBubble
-          getBubbles={getBubbles}
-
-          bubbles={bubbles}
-          addBubble = {addBubble()}
-        />
-        {/* render = {() => <NewBubble showNewBubble={props.showNewBubble()}/>}> */}
+      <Route exact path="/new-bubble"
+      render= {() => <CreateABubbleForm addBubble={addBubble()}/>}>
       </Route>
 
       <Route exact path="/join-bubble">

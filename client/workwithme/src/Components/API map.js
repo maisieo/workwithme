@@ -1,32 +1,38 @@
 import { useState, React, useEffect } from "react";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 import MapBubbleForm from "./MapBubbleForm";
-const key = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
-const BASEURL = "http://www.mapquestapi.com/geocoding/v1/";
+const key1 = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
+const key2 = "HtjjO4zjuAqWJ5bTcp6HMXp5Ej4uq47i";
+const BASEURLmap = "http://www.mapquestapi.com/geocoding/v1/";
 
-
-function APImap({bubbles}) {
+function APImap({ bubbles }) {
   const [data, setData] = useState("");
+  const [dataLocations, setDataLocations] = useState("");
   const [error, setError] = useState("");
   const [markers, setMarkers] = useState([]);
+  let coordinatesOfLocations = [];
+  let justArray = [];
+  let resultsArray = [];
+  let hopefullyFinal = null;
 
+  useEffect(() => {
+    // Update the document title using the browser API
+    getCoordinatesOfDB();
+    // getBatchData();
+  });
+  let URLpart = "";
+  let locationOfBubbles = bubbles.map((b) => [b.location]);
+  console.log("These are the locations", locationOfBubbles);
 
-// let locationOfBubbles = bubbles.map(b=> [b.location]);
-// console.log("These are the locations", locationOfBubbles);
+  function getCoordinatesOfDB() {
+    locationOfBubbles.forEach(
+      (location) => (URLpart += `&location=${location[0]}`)
+    );
+    // getBatchData();
+  }
 
-//turn locations from database into markers!
-
-// const batchGeoCode 
-//for location in locationOfBubbles. add code that will be added to the url, so like "location={location}" OK YES
-//THIS IS IT
-
-//define a function for turning the database locations into an array of coordinates
-
-
-
-
-  const getData = async (location) => {
-    let url = `${BASEURL}address?key=${key}&location=${location}`;
+  const getBatchData = async () => {
+    let url = `${BASEURLmap}batch?key=${key2}${URLpart}&thumbMaps=true&outFormat=json`;
     console.log("URL", url);
     setData("");
 
@@ -36,13 +42,26 @@ function APImap({bubbles}) {
       if (response.ok) {
         console.log("Response ok");
         let data = await response.json();
-        setData(data);
-        let coordinates = [
-          data.results[0].locations[0].latLng.lat,
-          data.results[0].locations[0].latLng.lng,
-        ];
-        console.log("These are coordinates", coordinates);
-        console.log("This is data set by getData", data);
+        setDataLocations(data);
+        console.log(data);
+        resultsArray = data.results;
+        console.log("THIS IS RESULTS ARRAY", resultsArray);
+        resultsArray.forEach((location) =>
+          coordinatesOfLocations.push([
+            location.locations[0].latLng.lat,
+            location.locations[0].latLng.lng,
+          ])
+        );
+        justArray.push(Object.values(coordinatesOfLocations));
+        console.log("coordinates of locatinos", coordinatesOfLocations);
+        console.log("huhuh", justArray);
+        console.log("this is array[0]", justArray[0]);
+        hopefullyFinal = justArray[0];
+        console.log("hope", hopefullyFinal);
+          setMarkers(hopefullyFinal);
+          
+      
+        console.log("These are markrs", markers)
       } else {
         console.log("Run into an error");
         setError(`Server error: ${response.status} ${response.statusText}`);
@@ -53,36 +72,64 @@ function APImap({bubbles}) {
     }
   };
 
-  // console.log("display results", data.results[0])
+  //now we have coordinates of locations, and we need to turn all these into markers.
+
+  //using dataLocations, find the coordinates of each location and put it in a separate array called "coordinatesOfLocation"
+
+  const getData = async (location) => {
+    let url = `${BASEURLmap}address?key=${key1}&location=${location}`;
+    console.log("URL", url);
+    setData("");
+    getBatchData();
+    try {
+      let response = await fetch(url);
+      // call fetch, wait for return
+      if (response.ok) {
+        console.log("Response ok");
+        let data = await response.json();
+        setData(data);
+      } else {
+        console.log("Run into an error");
+        setError(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log("Ended up in catch");
+      setError(`Network error: ${err.message}`);
+    }
+  };
+
   return (
     <div>
-      <MapBubbleForm onSubmit={(location) => getData(location)} /><div>
-These are the locations <ul>{bubbles.map(b=>(<li>{b.location}</li>))}</ul></div>
-      {data && (
-        <MapContainer
-          center={[
-            data.results[0].locations[0].latLng.lat,
-            data.results[0].locations[0].latLng.lng,
-            // 50.8503 , -4.3517
-          ]}
-          zoom={12}
-          scrollWheelZoom={true}
-        >
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {/* <Marker
-            position={[
+      <MapBubbleForm onSubmit={(location) => getData(location)} />
+      <div>
+        {hopefullyFinal}
+        {data && (
+          <MapContainer
+            center={[
               data.results[0].locations[0].latLng.lat,
               data.results[0].locations[0].latLng.lng,
               // 50.8503 , -4.3517
             ]}
-          // > */}
-          {/* //   <Popup>Bubble 1</Popup>
-          // </Marker> */}
-        </MapContainer>
-      )}
+            zoom={14.5}
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+        
+           {markers.map((position, idx) => 
+          <Marker key={`marker-${idx}`} position={position}>
+            <Popup>
+          <span>Hello world!</span>
+            </Popup>
+          </Marker>
+          //change the popup to include data about the bubble
+            )}
+       
+          </MapContainer>
+        )}
+      </div>
     </div>
   );
 }

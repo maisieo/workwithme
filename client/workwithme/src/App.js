@@ -1,7 +1,6 @@
 // import { latLng } from "leaflet";
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Table from "react-bootstrap/Table";
 // the code below is for checking if users are being authorized to use the app
 import Local from "./Components/helpers/Local";
 import Api from "./Components/helpers/Api";
@@ -9,6 +8,7 @@ import Api from "./Components/helpers/Api";
 // // import { Icon } from "leaflet";
 import Navbar from "./Components/Navbar";
 import Routes from "./Components/Routes";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import AuthenticatedRoute from "./Components/AuthenticatedRoute";
 
 function App() {
@@ -64,9 +64,7 @@ function App() {
       });
   }
 
-  function addBubble(
-    name,
-    handleChange,
+  function addBubble(firstname,
     location,
     workstations,
     wifi,
@@ -74,11 +72,11 @@ function App() {
     kitchen,
     quietspace,
     wheelchair,
-    smoking
-  ) {
+    smoking) 
+  
+  { 
     let newBubble = {
-      name,
-      handleChange,
+      firstname,
       location,
       workstations,
       wifi,
@@ -86,8 +84,9 @@ function App() {
       kitchen,
       quietspace,
       wheelchair,
-      smoking,
-    };
+      smoking
+    };   
+
     let options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -95,15 +94,20 @@ function App() {
       body: JSON.stringify(newBubble), //object needs to converted to json (with stringify)
     };
     fetch("/bubbles", options)
-      .then((result) => result.json())
-      .then((bubbles) => {
+      .then(result => result.json())
+      .then(bubbles => {
         setBubbles(bubbles);
+        console.log("Function add bubble is being called")
       })
       .catch((err) => {
         console.log("error!", err.message);
       });
   }
 
+  // function addBubble(data) {
+  //   console.log("This has been called on submit")
+  // }
+ 
   return (
     <div className="App">
       <Navbar />
@@ -112,7 +116,8 @@ function App() {
           </div> */}
       <Routes
         getBubbles={getBubbles}
-        addBubble={addBubble}
+        addBubble={() => addBubble}
+        // onSubmit={(firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking) => addBubble(firstname, location, workstations, wifi, petfriendly, kitchen, quietspace, wheelchair, smoking)}
         deleteBubble={deleteBubble}
         bubbles={bubbles}
         // bubbles={bubbles}
