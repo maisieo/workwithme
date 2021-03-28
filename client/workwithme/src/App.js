@@ -17,12 +17,12 @@ function App() {
   const [loginErrorMsg, setLoginErrorMsg] = useState("");
 
   async function doLogin(username, password) {
+
     let response = await Api.loginUser(username, password);
     if (response.ok) {
       Local.saveUserInfo(response.data.token, response.data.user);
       setUser(response.data.user);
       setLoginErrorMsg("");
-      useHistory.push("/");
     } else {
       setLoginErrorMsg("Login failed");
     }
