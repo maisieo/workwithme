@@ -22,7 +22,6 @@ function APImap({ bubbles }) {
   useEffect(() => {
     // Update the document title using the browser API
     getCoordinatesOfDB();
-    // getBatchData();
   });
   let URLpart = "";
   let locationOfBubbles = bubbles.map((b) => [b.location]);
@@ -33,7 +32,6 @@ function APImap({ bubbles }) {
     locationOfBubbles.forEach(
       (location) => (URLpart += `&location=${location[0]}`)
     );
-    // getBatchData();
   }
 
   const getBatchData = async () => {
@@ -77,7 +75,7 @@ function APImap({ bubbles }) {
             lon: x[3],
           };
         });
-        console.log(objs)
+        console.log(objs);
         setMarkers(objs);
 
         console.log("These are markrs", markers);
@@ -90,10 +88,6 @@ function APImap({ bubbles }) {
       setError(`Network error: ${err.message}`);
     }
   };
-
-  //now we have coordinates of locations, and we need to turn all these into markers.
-
-  //using dataLocations, find the coordinates of each location and put it in a separate array called "coordinatesOfLocation"
 
   const getData = async (location) => {
     let url = `${BASEURLmap}address?key=${key1}&location=${location}`;
@@ -138,11 +132,14 @@ function APImap({ bubbles }) {
             />
 
             {markers.map(
-              ({name, lat, lon, workstations}, idx) => (
-                <Marker  key={`marker-${idx}`} position={[lat, lon]}>
-                  <Popup>
-                 <h6>{name}'s bubble<br></br> has {workstations} workstations <br></br>available</h6>
-                 <button>Join</button>
+              ({ name, lat, lon, workstations }, idx) => (
+                <Marker key={`marker-${idx}`} position={[lat, lon]}>
+                  <Popup id="popup">
+                    <h6>
+                      {name}'s bubble<br></br> has {workstations} workstations{" "}
+                      <br></br>available
+                    </h6>
+                    <button>Join</button>
                   </Popup>
                 </Marker>
               )
