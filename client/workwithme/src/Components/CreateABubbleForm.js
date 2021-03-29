@@ -1,22 +1,24 @@
 import React, { useState } from "react";
+import Popup from "./PopUp";
 
 //Defines the use states for the walk form
 function CreateABubbleForm(props) {
   const [firstname, setFirstname] = useState("");
   const [location, setLocation] = useState("");
   const [workstations, setWorkstations] = useState("");
-  const [wifi, setWifi] = useState("yes");
-  const [petfriendly, setPetfriendly] = useState("yes");
-  const [kitchen, setKitchen] = useState("yes");
-  const [quietspace, setQuietspace] = useState("yes");
-  const [wheelchair, setWheelchair] = useState("yes");
-  const [smoking, setSmoking] = useState("yes");
-
-  //   const [isOpen, setIsOpen] = useState(false);
+  const [wifi, setWifi] = useState(false);
+  const [petfriendly, setPetfriendly] = useState(false);
+  const [kitchen, setKitchen] = useState(false);
+  const [quietspace, setQuietspace] = useState(false);
+  const [wheelchair, setWheelchair] = useState(false);
+  const [smoking, setSmoking] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [bubble, setBubble] = useState([{ firstname: "Julie", workstations: "" }]);
+  
 
   //Function to change the date, time and title when the form field change
   function handleChange(event) {
-    let { name, value } = event.target;
+    let { name, value, checked } = event.target;
 
     switch (name) {
       case "firstname":
@@ -29,27 +31,43 @@ function CreateABubbleForm(props) {
         setWorkstations(value);
         break;
       case "wifi":
-        setWifi(value);
+        setWifi(checked);
         break;
       case "petfriendly":
-        setPetfriendly(value);
+        setPetfriendly(checked);
         break;
       case "kitchen":
-        setKitchen(value);
+        setKitchen(checked);
         break;
       case "quietspace":
-        setQuietspace(value);
+        setQuietspace(checked);
         break;
       case "wheelchair":
-        setWheelchair(value);
+        setWheelchair(checked);
         break;
       case "smoking":
-        setSmoking(value);
+        setSmoking(checked);
         break;
     }
-    
   }
+  const handleWifi = () => setWifi(!wifi);
+  const handleKitchen = () => setKitchen(!kitchen);
+  const handlePet = () => setPetfriendly(!petfriendly);
+  const handleQuiet = () => setQuietspace(!quietspace);
+  const handleWheelchair = () => setWheelchair(!wheelchair);
+  const handleSmoking = () => setSmoking(!smoking);
 
+  let newBubbleData = {
+    firstname,
+    location,
+    workstations,
+    wifi,
+    petfriendly,
+    kitchen,
+    quietspace,
+    wheelchair,
+    smoking,
+  };
   //Function to add the title, date and time to the table on submit
   function handleSubmit(event) {
     event.preventDefault();
@@ -73,9 +91,23 @@ function CreateABubbleForm(props) {
     setQuietspace("");
     setWheelchair("");
     setSmoking("");
-    console.log("After submit", firstname, location, workstations, wifi, petfriendly, wheelchair)
+    setBubble(newBubbleData)
+    console.log("this is bubble", bubble)
+    console.log(
+      "After submit",
+      firstname,
+      location,
+      workstations,
+      wifi,
+      petfriendly,
+      wheelchair,
+      smoking
+    );
   }
-
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+    console.log(firstname, "here's first name on toggle");
+  };
   return (
     //Walk form
     <div className="CreateABubbleForm">
@@ -109,86 +141,110 @@ function CreateABubbleForm(props) {
             onChange={handleChange}
             required
           >
+            <option id="empty"></option>
             <option id="one">1</option>
             <option id="two">2 </option>
             <option id="three">3 </option>
             <option id="four">4</option>
           </select>
         </label>
-        <label>
-          Wifi?{" "}
-          <select
-            name="wifi"
-            value={wifi}
-            onChange={handleChange}
-            required
-          >
-            <option id="yes">yes</option>
-            <option id="no">no </option>
-            </select>
-        </label>
-        <label>
-          Pet friendly?{" "}
-          <select
-            name="petfriendly"
+        Wifi?{" "}
+        <span>
+          {" "}
+          Wifi
+          <input type="checkbox" onClick={handleWifi} value={wifi} />
+        </span>
+        <span>
+          {" "}
+          Pet friendly
+          <input
+            type="checkbox"
             value={petfriendly}
+            onClick={handlePet}
             onChange={handleChange}
-            required
-          >
-            <option id="yes">yes</option>
-            <option id="no">no </option>
-            </select>
-        </label>
-        <label>
-        Kitchen access?{" "}
-          <select
-            name="kitchen"
+          ></input>
+        </span>
+        <span>
+          {" "}
+          Access to kitchen
+          <input
+            type="checkbox"
             value={kitchen}
-            onChange={handleChange}
-            required
-          >
-            <option id="yes">yes</option>
-            <option id="no">no </option>
-            </select>
-        </label>
-        <label>
-        Quiet space?{" "}
-          <select
-            name="quietspace"
+            onClick={handleKitchen}
+          ></input>
+        </span>
+        <span>
+          {" "}
+          Quiet space
+          <input
+            type="checkbox"
             value={quietspace}
             onChange={handleChange}
-            required
-          >
-            <option id="yes">yes</option>
-            <option id="no">no </option>
-            </select>
-        </label>
-        <label>
-        Wheelchair access?{" "}
-          <select
-            name="wheelchair"
+            onClick={handleQuiet}
+          ></input>
+        </span>
+        <span>
+          {" "}
+          Wheelchair access
+          <input
+            type="checkbox"
             value={wheelchair}
             onChange={handleChange}
-            required
-          >
-            <option id="yes">yes</option>
-            <option id="no">no </option>
-            </select>
-        </label>
-        <label>
-        Smoking?{" "}
-          <select
-            name="smoking"
+            onClick={handleWheelchair}
+          ></input>
+        </span>
+        <span>
+          {" "}
+          Smoking corner
+          <input
+            type="checkbox"
             value={smoking}
             onChange={handleChange}
-            required
-          >
-            <option id="yes">yes</option>
-            <option id="no">no </option>
-            </select>
-        </label>
-
-        <button>Create bubble</button>
+            onClick={handleSmoking}
+          ></input>
+        </span>
+        <button
+          id="buttonCreateBubble"
+          type="submit"
+          value="Click to Open Popup"
+          onClick={togglePopup}
+        >
+          {" "}
+          Create a bubble{" "}
+          {isOpen && (
+            <Popup
+              content={
+                <>
+                  <h2>Your new bubble has been created</h2>
+                  <p>Welcome {bubble.firstname}</p>
+                  <p>
+                    {" "}
+                    Your bubble has {bubble.workstations} workstation(s) to offer{" "}
+                  </p>
+                  <h1> Features </h1>
+                  <p>
+                    <span> Wifi: {bubble.wifi === true ? "Yes" : "/"}</span>
+                    <span>
+                      {" "}
+                      Pet Friendly: {bubble.petfriendly === true ? "Yes" : "/"}
+                    </span>
+                    <span>
+                      Kitchen Access: {bubble.kitchen === true ? "Yes" : "/"}
+                    </span>
+                    <span>
+                      Quiet Space: {bubble.quietspace === true ? "Yes" : "/"}
+                    </span>
+                    <span>
+                      Wheelchair Access: {bubble.wheelchair === true ? "Yes" : "/"}
+                    </span>
+                    <span>Smoking Corner {bubble.smoking === true ? "Yes" : "/"}</span>
+                  </p>
+                </>
+              }
+              handleClose={togglePopup}
+            />
+          )}
+        </button>
       </form>
     </div>
   );
