@@ -1,0 +1,11 @@
+.HomeView{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background: url("./background-photo.jfif") !important;
+  }
+
+  h1 {
+      margin: 20px 20px;
+  }
+  

@@ -1,6 +1,6 @@
 import { React} from "react";
 import { Route, Switch } from "react-router-dom";
-import HomeView from "./HomeView";
+// import HomeView from "./HomeView";
 import NewBubble from "./NewBubble";
 import JoinBubble from "./JoinBubble";
 import MapWithNewBubble from "./MapWithNewBubble";
@@ -8,15 +8,20 @@ import Login from "./Login";
 import Register from "./Register";
 import { propTypes } from "react-bootstrap/esm/Image";
 import CreateABubbleForm from "./CreateABubbleForm";
+import About from "./About";
+import HomeView from "./HomeView";
 
 // import AuthenticatedRoute from "./AuthenticatedRoute";
 
 function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
   return (
     <Switch>
-      {/* Home: Use 'exact' or else this route will match EVERYTHING */}
-      <Route path="/" exact>
+       <Route path="/" exact>
         <HomeView />
+      </Route>
+      {/* Home: Use 'exact' or else this route will match EVERYTHING */}
+      <Route path="/About" exact>
+        <About />
       </Route>
       {/* <Route exact path="/plant-sitter"
             render = {() => <PlantSitterForm addSitter={props.addSitter()}/>}>

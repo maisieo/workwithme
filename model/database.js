@@ -18,9 +18,8 @@ const con = mysql.createConnection({
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
-
   let sql =
-    "DROP TABLE if exists bubbles;CREATE TABLE bubbles(id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, firstname VARCHAR(30) NOT NULL, location VARCHAR(30) NOT NULL, workstations INT NOT NULL, wifi VARCHAR(30) NOT NULL, petfriendly VARCHAR(30) NOT NULL, kitchen VARCHAR(30) NOT NULL, quietspace VARCHAR(30) NOT NULL, wheelchair VARCHAR(30) NOT NULL, smoking VARCHAR(30) NOT NULL);";
+    "DROP TABLE if exists bubbles;CREATE TABLE bubbles(id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, firstname VARCHAR(30) NOT NULL, location VARCHAR(30) NOT NULL, workstations INT NOT NULL, wifi BOOLEAN NOT NULL, petfriendly BOOLEAN NOT NULL, kitchen BOOLEAN NOT NULL, quietspace BOOLEAN NOT NULL, wheelchair BOOLEAN NOT NULL, smoking BOOLEAN NOT NULL);";
 
   con.query(sql, function (err, result) {
     if (err) throw err;

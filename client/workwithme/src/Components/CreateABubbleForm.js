@@ -48,7 +48,7 @@ function CreateABubbleForm(props) {
       case "smoking":
         setSmoking(checked);
         break;
-    }
+        }
   }
   const handleWifi = () => setWifi(!wifi);
   const handleKitchen = () => setKitchen(!kitchen);

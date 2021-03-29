@@ -9,7 +9,7 @@ function APImap({ bubbles }) {
   const [data, setData] = useState("");
   const [dataLocations, setDataLocations] = useState("");
   const [error, setError] = useState("");
-  const [markers, setMarkers] = useState([]);
+  const [markers, setMarkers] = useState();
   let allBubblesData = null;
   let coordinatesOfLocations = [];
   let justArray = [];
@@ -17,6 +17,7 @@ function APImap({ bubbles }) {
   let hopefullyFinal = null;
   let bubbleData = [];
   let array3 = [];
+  let objs = [];
 
   useEffect(() => {
     // Update the document title using the browser API
@@ -26,7 +27,7 @@ function APImap({ bubbles }) {
   let URLpart = "";
   let locationOfBubbles = bubbles.map((b) => [b.location]);
   console.log("These are the locations", locationOfBubbles);
-  console.log("bubbles", bubbles)
+  console.log("bubbles", bubbles);
 
   function getCoordinatesOfDB() {
     locationOfBubbles.forEach(
@@ -56,19 +57,30 @@ function APImap({ bubbles }) {
             location.locations[0].latLng.lng,
           ])
         );
-                justArray.push(Object.values(coordinatesOfLocations));
+        justArray.push(Object.values(coordinatesOfLocations));
         console.log("coordinates of locations", coordinatesOfLocations);
         hopefullyFinal = justArray[0];
         console.log("hope", hopefullyFinal);
         bubbleData = bubbles.map((e) => [e.firstname, e.workstations]);
-        console.log("this is bubble data", bubbleData)
-        array3 = bubbleData.map((item, idx) => [...item, ...hopefullyFinal[idx]])
+        console.log("this is bubble data", bubbleData);
+        array3 = bubbleData.map((item, idx) => [
+          ...item,
+          ...hopefullyFinal[idx],
+        ]);
         // for (let i=0; i <bubbleData.length; i++) {array3.push([...bubbleData[i],...hopefullyFinal[i]])}
-        console.log(array3, "this is array3")
-        setMarkers(hopefullyFinal);
-          
-      
-        console.log("These are markrs", markers)
+        console.log(array3, "this is array3");
+        objs = array3.map(function (x) {
+          return {
+            name: x[0],
+            workstations: x[1],
+            lat: x[2],
+            lon: x[3],
+          };
+        });
+        console.log(objs)
+        setMarkers(objs);
+
+        console.log("These are markrs", markers);
       } else {
         console.log("Run into an error");
         setError(`Server error: ${response.status} ${response.statusText}`);
@@ -104,7 +116,7 @@ function APImap({ bubbles }) {
       setError(`Network error: ${err.message}`);
     }
   };
-let popupspeech;
+
   return (
     <div>
       <MapBubbleForm onSubmit={(location) => getData(location)} />
@@ -124,17 +136,17 @@ let popupspeech;
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-        
-           {markers.map((position, idx) => 
-          <Marker key={`marker-${idx}`} position={position}>
-            <Popup>
-        
-          <span></span>
-            </Popup>
-          </Marker>
-          //change the popup to include data about the bubble
+
+            {markers.map(
+              ({name, lat, lon, workstations}, idx) => (
+                <Marker position={[lat, lon]}>
+                  <Popup>
+                 {name}'s bubble has {workstations} workstations available
+                  </Popup>
+                </Marker>
+              )
+              //change the popup to include data about the bubble
             )}
-       
           </MapContainer>
         )}
       </div>
