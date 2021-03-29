@@ -10,6 +10,7 @@ import { propTypes } from "react-bootstrap/esm/Image";
 import CreateABubbleForm from "./CreateABubbleForm";
 import About from "./About";
 import HomeView from "./HomeView";
+import BubbleList from "./BubbleList";
 
 // import AuthenticatedRoute from "./AuthenticatedRoute";
 
@@ -42,6 +43,9 @@ function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
 
       <Route exact path="/new-bubble-created">
         <MapWithNewBubble bubbles={bubbles} />
+      </Route>
+      <Route exact path="/all-bubbles">
+        <BubbleList bubbles={bubbles} onDelete={id => deleteBubble(id)}/>
       </Route>
 
       <Route>{/* <AuthenticatedRoute /> */}</Route>

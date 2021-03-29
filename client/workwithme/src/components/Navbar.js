@@ -19,6 +19,9 @@ function Navbar1() {
           <ReactBootstrap.Nav.Link href="join-bubble">
             Find a bubble
           </ReactBootstrap.Nav.Link>
+          <ReactBootstrap.Nav.Link href="all-bubbles">
+            All bubbles
+          </ReactBootstrap.Nav.Link>
         </ReactBootstrap.Nav>
         <ReactBootstrap.Button variant="outline-success" href="login">
           Login

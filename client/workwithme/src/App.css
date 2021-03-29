@@ -67,3 +67,18 @@ span::before { content: '\A'; white-space: pre; }
   border: 1px solid #999;
   font-size: 20px;
 }
+
+th {
+  color:rgb(76, 180, 158);
+  font-size: smaller;
+  text-decoration: none;
+}
+
+td {
+  color: white;
+}
+
+img {
+
+  
+}
