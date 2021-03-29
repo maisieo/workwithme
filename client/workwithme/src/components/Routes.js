@@ -19,13 +19,10 @@ function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
        <Route path="/" exact>
         <HomeView />
       </Route>
-      {/* Home: Use 'exact' or else this route will match EVERYTHING */}
-      <Route path="/About" exact>
+
+      <Route path="/about" exact>
         <About />
       </Route>
-      {/* <Route exact path="/plant-sitter"
-            render = {() => <PlantSitterForm addSitter={props.addSitter()}/>}>
-            </Route> */}
 
       <Route exact path="/new-bubble"
       render= {() => <CreateABubbleForm addBubble={addBubble()}/>}>

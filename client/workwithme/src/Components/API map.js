@@ -141,7 +141,8 @@ function APImap({ bubbles }) {
               ({name, lat, lon, workstations}, idx) => (
                 <Marker position={[lat, lon]}>
                   <Popup>
-                 {name}'s bubble has {workstations} workstations available
+                 <h6>{name}'s bubble<br></br> has {workstations} workstations <br></br>available</h6>
+                 <button>Join</button>
                   </Popup>
                 </Marker>
               )

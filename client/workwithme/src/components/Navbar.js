@@ -12,7 +12,7 @@ function Navbar1() {
       <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
       <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
         <ReactBootstrap.Nav className="mr-auto">
-          <ReactBootstrap.Nav.Link href="/">About</ReactBootstrap.Nav.Link>
+          <ReactBootstrap.Nav.Link href="/about">About</ReactBootstrap.Nav.Link>
           <ReactBootstrap.Nav.Link href="new-bubble">
             Create a bubble
           </ReactBootstrap.Nav.Link>
