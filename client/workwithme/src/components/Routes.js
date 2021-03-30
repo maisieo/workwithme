@@ -1,6 +1,6 @@
 import { React} from "react";
 import { Route, Switch } from "react-router-dom";
-import HomeView from "./HomeView";
+// import HomeView from "./HomeView";
 import NewBubble from "./NewBubble";
 import JoinBubble from "./JoinBubble";
 import MapWithNewBubble from "./MapWithNewBubble";
@@ -9,6 +9,9 @@ import Register from "./Register";
 import { propTypes } from "react-bootstrap/esm/Image";
 import AuthenticatedRoute from "./AuthenticatedRoute";
 import CreateABubbleForm from "./CreateABubbleForm";
+import About from "./About";
+import HomeView from "./HomeView";
+import BubbleList from "./BubbleList";
 
 async function doRegister(username, password, email) {
     let newUser = {username, password, email}
@@ -26,13 +29,13 @@ async function doRegister(username, password, email) {
 function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
   return (
     <Switch>
-      {/* Home: Use 'exact' or else this route will match EVERYTHING */}
-      <Route path="/" exact>
+       <Route path="/" exact>
         <HomeView />
       </Route>
-      {/* <Route exact path="/plant-sitter"
-            render = {() => <PlantSitterForm addSitter={props.addSitter()}/>}>
-            </Route> */}
+
+      <Route path="/about" exact>
+        <About />
+      </Route>
 
       <Route exact path="/new-bubble"
       render= {() => <CreateABubbleForm addBubble={addBubble()}/>}>
@@ -52,6 +55,9 @@ function Routes({getBubbles, addBubble, deleteBubble, bubbles}) {
 
       <Route exact path="/new-bubble-created">
         <MapWithNewBubble bubbles={bubbles} />
+      </Route>
+      <Route exact path="/all-bubbles">
+        <BubbleList bubbles={bubbles} onDelete={id => deleteBubble(id)}/>
       </Route>
 
       <Route><AuthenticatedRoute /></Route>
