@@ -65,7 +65,7 @@ router.post("/login", async (req, res, next) => {
         } else {
           return res.json({
             success: false,
-            message: "passwords do not match",
+            message: "Something went wrong :(",
           });
         }
       });
