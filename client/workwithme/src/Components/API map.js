@@ -1,6 +1,7 @@
 import { useState, React, useEffect } from "react";
 import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
 import MapBubbleForm from "./MapBubbleForm";
+import { popupContent, popupHead, popupText, okText } from "./PopupStyles";
 const key1 = "3ZRkB6HHC7nuyGx3xGq1wvkQNUZgBEyU";
 const key2 = "HtjjO4zjuAqWJ5bTcp6HMXp5Ej4uq47i";
 const BASEURLmap = "http://www.mapquestapi.com/geocoding/v1/";
@@ -133,13 +134,22 @@ function APImap({ bubbles }) {
 
             {markers.map(
               ({ name, lat, lon, workstations }, idx) => (
-                <Marker key={`marker-${idx}`} position={[lat, lon]}>
-                  <Popup id="popup">
-                    <h6>
-                      {name}'s bubble<br></br> has {workstations} workstations{" "}
-                      <br></br>available
-                    </h6>
-                    <button>Join</button>
+                <Marker
+                  key={`marker-${idx}`}
+                  position={[lat, lon]}
+                  // icon={defaultMarker}
+                >
+                  <Popup className="popup">
+                    <div style={popupContent}>
+                      <img
+                        src="https://cdn0.iconfinder.com/data/icons/co-working/512/coworking-sharing-02-128.png"
+                        width="70"
+                        height="70"
+                      />
+                      <div className="m-2" style={popupHead}>
+                        {name}'s bubble has {workstations} workstations free!{" "}
+                      </div>
+                    </div>
                   </Popup>
                 </Marker>
               )

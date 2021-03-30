@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
 import "./HomeView.css";
-
+import HeroSection from "./HeroSection";
 
 function HomeView() {
-    return (
-        <div className="HomeView">
-      
-            <h1>WELCOME TO WORKWITHME</h1>
-           
-        </div>
-    );
+  return (
+   <>
+   <HeroSection/>
+   </>
+  );
 }
 
 export default HomeView;
