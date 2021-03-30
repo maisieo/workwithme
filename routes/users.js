@@ -5,13 +5,13 @@ const db = require("../model/helper");
 
 // get all users
 router.get('/users', async function(req, res, next) {
-    let sql = 'SELECT * FROM users ORDER BY username';
+    let sql = 'SELECT * FROM users ORDER BY username;';
 
     try {
         let results = await db(sql);
         let users = results.data;
-        users.forEach(u => delete u.password);  // don't return passwords
-        res.send(users);
+        // users.forEach(u => delete u.password);  // don't return passwords
+        res.send(users.username);
     } catch (err) {
         next(err);
     }

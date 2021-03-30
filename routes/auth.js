@@ -45,23 +45,23 @@ router.post('/login', async (req, res, next) => {
             res.status(400).send({ error: 'Login failed' });
         } else {
             let user = results.data[0];  // the user's row/record from the DB
-            let passwordsEqual = await bcrypt.compare(password, user.password);
-            if (passwordsEqual) {
-                // Passwords match
-                let payload = { userId: user.id };
-                // Create token containing user ID
-                let token = jwt.sign(payload, SECRET_KEY);
-                // Also return user (without password)
-                delete user.password;
-                res.send({
-                    message: 'Login succeeded',
-                    token: token,
-                    user: user
+            // bcrypt.compare takes in two arguments, the first is the plaintext password
+            // and the second is the hashedpassword in the database
+            // it compares the hashed version of the plaintext to the actual hashedpassword
+            bcrypt.compare(password, user.hashedpassword,
+                function(err, result) {
+                    if (result) {
+                        let payload = {userID: user.id };
+                        let token = jwt.sign(payload, SECRET_KEY);
+                        res.send({
+                            message: 'Login succeeded',
+                            token: token,
+                            user: user
+                        })
+                    } else {
+                        res.status(400).send({error: 'Login failed'});
+                    }
                 });
-            } else {
-                // Passwords don't match
-                res.status(400).send({ error: 'Login failed' });
-            }
         }
     } catch (err) {
         next(err);
