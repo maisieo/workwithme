@@ -14,13 +14,13 @@ const BCRYPT_WORK_FACTOR = 12;
  * Register a user
  **/
 
-router.post('/register', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     let { username, password, email } = req.body;
     let hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
 
     try {
         let sql = `
-            INSERT INTO users (username, password, email)
+            INSERT INTO users (username, hashedpassword, email)
             VALUES ('${username}', '${hashedPassword}', '${email}');
         `;
         await db(sql);

@@ -22,7 +22,7 @@ app.get("/", function(req, res, next) {
 });
 app.use("/", authRouter);
 app.use("/", indexRouter);
-// app.use("/users", usersRouter);
+app.use("/users", usersRouter);
 app.use("/bubbles", bubblesRouter);
 // app.get("/bubbles", bubblesRouter);
 
