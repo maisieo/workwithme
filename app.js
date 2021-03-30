@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client/build")));
 app.get("/", function(req, res, next) {
-  res.send("Access the API at path /api");
+  res.send("Welcome to Work With Me!");
 });
 app.use("/", authRouter);
 app.use("/", indexRouter);

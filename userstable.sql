@@ -9,3 +9,10 @@ CREATE TABLE `users` (
     email VARCHAR(200) NOT NULL,
     wsneeded INT NOT NULL
 );
+
+CREATE TABLE `registration` (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(30) NOT NULL UNIQUE,
+    hashedpassword VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL
+);
