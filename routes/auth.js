@@ -5,8 +5,9 @@ const { SECRET_KEY } = require("../config");
 
 // generating tokens for the user to use when logging in
 var jwt = require("jsonwebtoken");
-var bcrypt = require("bcrypt");
-const BCRYPT_WORK_FACTOR = 12;
+// var bcrypt = require("bcrypt");
+var bcrypt = require('bcryptjs');
+// const BCRYPT_WORK_FACTOR = 12;
 // the code above hashes the user password and compares it to the one stored
 // if the hashed password matches, the user can continue
 
@@ -14,20 +15,40 @@ const BCRYPT_WORK_FACTOR = 12;
  * Register a user
  **/
 
+// router.post("/register", async (req, res, next) => {
+//   let { username, password, email } = req.body;
+//   let hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
+
+//   try {
+//     let sql = `
+//             INSERT INTO registration (username, hashedpassword, email)
+//             VALUES ('${username}', '${hashedPassword}', '${email}');
+//         `;
+//     await db(sql);
+//     res.send({ message: "Registration succeeded" });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 router.post("/register", async (req, res, next) => {
   let { username, password, email } = req.body;
-  let hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
-
+  await bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(password, salt, function(err, hash) {
+        // Store hash in your password DB.
   try {
     let sql = `
             INSERT INTO registration (username, hashedpassword, email)
-            VALUES ('${username}', '${hashedPassword}', '${email}');
+            VALUES ('${username}', '${hash}', '${email}');
         `;
     await db(sql);
     res.send({ message: "Registration succeeded" });
   } catch (err) {
     next(err);
-  }
+  }        
+    });
+});
+
 });
 
 /**
