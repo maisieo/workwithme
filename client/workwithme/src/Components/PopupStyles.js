@@ -1,13 +1,13 @@
 const popupContent = {
     textAlign: "center",
-    height: "120px",
+    height: "160px",
     // marginTop: "30px",
-    width: "110px",
+    width: "130px",
     
    };
   const popupHead = {
     fontWeight: "bold",
-    fontSize: "10px",
+    fontSize: "13px",
   };
   
   const popupText = {

@@ -75,7 +75,8 @@ function App() {
     petfriendly,
     kitchen,
     quietspace,
-    wheelchair
+    wheelchair,
+    smoking
   ) {
     let newBubble = {
       firstname,
@@ -85,8 +86,19 @@ function App() {
       petfriendly,
       kitchen,
       quietspace,
-      wheelchair
+      wheelchair,
+      smoking
     };
+    // let newBubble = { 
+    // firstname: "Thaina",
+    // kitchen: 1,
+    // location: "Example",
+    // petfriendly: 1,
+    // quietspace: 0,
+    // wheelchair: 1,
+    // wifi: 0,
+    // smoking: 0,
+    // workstations: "2"};
 
     let options = {
       method: "POST",
@@ -110,6 +122,7 @@ function App() {
   // }
 
   return (
+    
     <div className="App">
       <Navbar />
       {/* <div>

@@ -10,8 +10,7 @@ function JoinBubble({ bubbles }) {
 
   return (
     <div className="NewBubble">
-      <h3>Find a bubble</h3>
- 
+     
           <APImap data={data} bubbles={bubbles} />
     </div>
   );

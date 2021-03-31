@@ -111,10 +111,10 @@ function APImap({ bubbles }) {
       setError(`Network error: ${err.message}`);
     }
   };
-
+ 
   return (
     <div>
-      <MapBubbleForm onSubmit={(location) => getData(location)} />
+            <MapBubbleForm onSubmit={(location) => getData(location)} />
       <div>
         {hopefullyFinal}
         {data && (
@@ -132,8 +132,8 @@ function APImap({ bubbles }) {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {markers.map(
-              ({ name, lat, lon, workstations }, idx) => (
+            {markers &&
+              markers.map(({ name, lat, lon, workstations }, idx) => (
                 <Marker
                   key={`marker-${idx}`}
                   position={[lat, lon]}
@@ -149,16 +149,23 @@ function APImap({ bubbles }) {
                       <div className="m-2" style={popupHead}>
                         {name}'s bubble has {workstations} workstations free!{" "}
                       </div>
+                      <a
+                        href="/all-bubbles"
+                        type="button"
+                        class="btn btn-light btn-sm"
+                      >
+                        {" "}
+                        See list
+                      </a>
                     </div>
                   </Popup>
                 </Marker>
-              )
-              //change the popup to include data about the bubble
-            )}
+              ))}
           </MapContainer>
         )}
       </div>
     </div>
+    
   );
 }
 

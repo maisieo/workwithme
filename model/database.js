@@ -19,7 +19,7 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
   let sql =
-    "DROP TABLE if exists bubbles;CREATE TABLE bubbles(id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, firstname VARCHAR(30) NOT NULL, location VARCHAR(30) NOT NULL, workstations INT NOT NULL, wifi BOOLEAN NOT NULL, petfriendly BOOLEAN NOT NULL, kitchen BOOLEAN NOT NULL, quietspace BOOLEAN NOT NULL, wheelchair BOOLEAN NOT NULL, smoking BOOLEAN NOT NULL);";
+    "DROP TABLE if exists bubbles;CREATE TABLE bubbles(id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, firstname VARCHAR(30) NOT NULL, location VARCHAR(30) NOT NULL, workstations INT NOT NULL, wifi TINYINT(1), petfriendly TINYINT(1), kitchen TINYINT(1), quietspace TINYINT(1), wheelchair TINYINT(1), smoking TINYINT(1));";
 
   con.query(sql, function (err, result) {
     if (err) throw err;

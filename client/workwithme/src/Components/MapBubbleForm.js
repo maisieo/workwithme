@@ -16,22 +16,46 @@ function MapBubbleForm(props) {
 
   return (
     //   //HTML for the form
-    
-    <div className="MapBubbleForm">
-      <form onSubmit={handleSubmit}>
-        <label>
-          Location &nbsp;
-          <input
-            id="locationField"
-            type="text"
-            name="location"
-            value={location}
-            onChange={handleChange}
-          />
-        </label>
-      </form>
-     
+  
+    <div className="findBubble">
+     <form onSubmit={handleSubmit}>
+         {/* <h2>Find a bubble</h2> */}
+      <label for="exampleDataList" class="form-label">
+        Location
+      </label>
+      <input
+        class="form-control"
+        list="datalistOptions"
+        id="exampleDataList"
+        placeholder="Type to search..."
+        type="text"
+        name="location"
+        value={location}
+        onChange={handleChange}
+      />
+      <datalist id="datalistOptions">
+        <option value="Barcelona" />
+        <option value="London" />
+        <option value="New York" />
+      </datalist>
+    </form>
     </div>
+
+    // {/* <div className="MapBubbleForm">
+    //   <form >
+    //     <label>
+    //       Location &nbsp;
+    //       <input
+    //         id="locationField"
+    //         type="text"
+    //         name="location"
+    //         value={location}
+    //         onChange={handleChange}
+    //       />
+    //     </label>
+    //   </form>
+
+    // </div> */}
   );
 }
 
