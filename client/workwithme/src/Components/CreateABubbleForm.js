@@ -118,6 +118,7 @@ return (feature) ? 1 : 0;
     //Walk form
     <div className="CreateABubbleForm">
       <h2 id="CreateABubble"> Create a bubble</h2>
+      
       <form onSubmit={handleSubmit}>
         <label>
           Firstname&nbsp;
@@ -229,37 +230,37 @@ return (feature) ? 1 : 0;
                   </p>
                   <h4> Features: </h4>
                   <p>
-                    <span> Wifi: {bubble.wifi === true ? <img
+                    <span> Wifi {bubble.wifi === 1 ? <img
                         src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
                         width="25"
                         height="30"
                       /> : "-"} </span>
                     <span>
                       {" "}
-                      Pet friendly: {bubble.petfriendly  === true ? <img
+                      Pet friendly {bubble.petfriendly  === 1 ? <img
                         src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
                         width="25"
                         height="30"
                       /> : "-"} </span>
                     <span>
-                      Kitchen Access: {bubble.kitchen === true ? <img
+                      Kitchen Access {bubble.kitchen === 1 ? <img
                         src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
                         width="25"
                         height="30"
                       /> : "-"} </span>
                     <span>
-                      Quiet Space: {bubble.quietspace  === true ? <img
+                      Quiet Space {bubble.quietspace  === 1 ? <img
                         src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
                         width="25"
                         height="30"
                       /> : "-"} </span>
                     <span>
-                      Wheelchair Access: {bubble.wheelchair  === true ? <img
+                      Wheelchair Access {bubble.wheelchair  === 1 ? <img
                         src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
                         width="25"
                         height="30"
                       /> : "-"} </span>
-                    <span>Smoking Corner {bubble.smoking  === true ? <img
+                    <span>Smoking Corner {bubble.smoking  === 1 ? <img
                         src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
                         width="25"
                         height="30"
