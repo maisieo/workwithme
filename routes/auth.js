@@ -34,45 +34,35 @@ router.post("/register", async (req, res, next) => {
  * Log in a user
  **/
 
-router.post("/login", async (req, res, next) => {
-  let { username, password } = req.body;
+router.post('/login', async (req, res, next) => {
+    let { username, password } = req.body;
 
-  try {
-    let results = await db(
-      `SELECT * FROM users WHERE username = '${username}';`
-    );
-    if (results.data.length === 0) {
-      // Username not found
-      res.status(400).send({ error: "Login failed" });
-    } else {
-      let user = results.data[0]; // the user's row/record from the DB
-      // bcrypt.compare takes in two arguments, the first is the plaintext password
-      // and the second is the hashedpassword in the database
-      // it compares the hashed version of the plaintext to the actual hashedpassword
-      await bcrypt.compare(password, user.hashedpassword, function (err, res) {
-        if (err) {
-          res.status(400).send({ error: "Login failed" });
-        }
-        if (res) {
-          // if the passwords dont match
-          let payload = { userID: user.id };
-          let token = jwt.sign(payload, SECRET_KEY);
-          res.send({
-            message: "Login succeeded",
-            token: token,
-            user: user,
-          });
+    try {
+        let results = await db(`SELECT * FROM users WHERE username = '${username}'`);
+        if (results.data.length === 0) {
+            // Username not found
+            res.status(400).send({ error: 'Login failed' });
         } else {
-          return res.json({
-            success: false,
-            message: "Something went wrong :(",
-          });
+            let user = results.data[0];  // the user's row/record from the DB
+            let passwordsEqual = await bcrypt.compare(password, user.hashedpassword);
+            if (passwordsEqual) {
+                // Passwords match
+                let payload = { userId: user.id };
+                // Create token containing user ID
+                let token = jwt.sign(payload, SECRET_KEY);
+                res.send({
+                    message: 'Login succeeded',
+                    token: token,
+                    user: user
+                });
+            } else {
+                // Passwords don't match
+                res.status(400).send({ error: 'Login failed' });
+            }
         }
-      });
+    } catch (err) {
+        next(err);
     }
-  } catch (err) {
-    next(err);
-  }
 });
 
 module.exports = router;
