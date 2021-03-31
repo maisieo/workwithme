@@ -18,7 +18,7 @@ function CreateABubbleForm(props) {
 
   //Function to change the date, time and title when the form field change
   function handleChange(event) {
-    let { name, value, checked } = event.target;
+      let { name, value, checked } = event.target;
 
     switch (name) {
       case "firstname":
@@ -115,7 +115,8 @@ return (feature) ? 1 : 0;
     console.log(firstname, "here's first name on toggle");
   };
   return (
-    //Walk form
+    
+
     <div className="CreateABubbleForm">
       <h2 id="CreateABubble"> Create a bubble</h2>
       

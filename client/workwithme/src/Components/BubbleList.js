@@ -6,6 +6,7 @@ function BubbleList({bubbles, onDelete}) {
   let info = bubbles[0] && Object.keys(bubbles[0]);
 
   return (
+    <div className="allbubbles">
     <Table borderless hover striped responsive="sm">
       <thead>
         <tr>
@@ -39,6 +40,7 @@ function BubbleList({bubbles, onDelete}) {
         ))}
       </tbody>
     </Table>
+    </div>
   );
 }
 

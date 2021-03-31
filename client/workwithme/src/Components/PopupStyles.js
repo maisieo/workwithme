@@ -1,8 +1,8 @@
 const popupContent = {
     textAlign: "center",
-    height: "140px",
+    height: "160px",
     // marginTop: "30px",
-    width: "115px",
+    width: "130px",
     
    };
   const popupHead = {
