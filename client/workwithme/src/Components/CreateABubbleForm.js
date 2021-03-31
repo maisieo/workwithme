@@ -78,7 +78,7 @@ return (feature) ? 1 : 0;
     props.addBubble(
       firstname,
       location,
-      workstations,
+      workstations.toString(),
       wifi,
       petfriendly,
       kitchen,
