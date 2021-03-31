@@ -33,7 +33,7 @@ var bcrypt = require('bcryptjs');
 
 router.post("/register", async (req, res, next) => {
   let { username, password, email } = req.body;
-  await bcrypt.genSalt(10, function(err, salt) {
+  bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(password, salt, function(err, hash) {
         // Store hash in your password DB.
   try {
@@ -41,7 +41,7 @@ router.post("/register", async (req, res, next) => {
             INSERT INTO registration (username, hashedpassword, email)
             VALUES ('${username}', '${hash}', '${email}');
         `;
-    await db(sql);
+    db(sql);
     res.send({ message: "Registration succeeded" });
   } catch (err) {
     next(err);

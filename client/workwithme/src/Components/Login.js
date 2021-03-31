@@ -98,6 +98,7 @@ function Login(props) {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+              onChange={handleChange}
             ></input>
             <small id="emailHelp" class="form-text text-muted">
               We'll never share your email with anyone else.
@@ -110,6 +111,7 @@ function Login(props) {
               class="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
+              onChange={handleChange}
             ></input>
           </div>
           <button type="submit" class="btn btn-primary">
