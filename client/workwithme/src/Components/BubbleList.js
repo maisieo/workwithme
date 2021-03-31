@@ -31,11 +31,11 @@ function BubbleList({bubbles, onDelete}) {
             {info.map(e => (
               <td>{row[e]}</td>
             ))}
-            <td>
+            {/* <td>
               <button id="deleteButton" onClick={() => onDelete(row.id)}>
                 Delete
               </button>
-            </td>
+            </td> */}
           </tr>
         ))}
       </tbody>

@@ -2,10 +2,12 @@
   text-align: center;
   background: url("./Components/background-image.jpg") no-repeat;
   /* background-image: */
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  /* display: flex; */
   object-fit: contain;
   background-size: 100%;
+  box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 20%);
 }
 
 #myBody {
