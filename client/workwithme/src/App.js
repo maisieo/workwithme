@@ -62,17 +62,29 @@ function App() {
     quietspace,
     wheelchair
   ) {
+    // let newBubble = {
+    //   firstname,
+    //   location,
+    //   workstations,
+    //   wifi,
+    //   petfriendly,
+    //   kitchen,
+    //   quietspace,
+    //   wheelchair
+    // };
+    let number = 0;
     let newBubble = {
       firstname,
       location,
       workstations,
-      wifi,
-      petfriendly,
-      kitchen,
-      quietspace,
-      wheelchair
+      number,
+      number,
+      number,
+      number,
+      number
     };
 
+console.log(newBubble, "newBubble");
     let options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },

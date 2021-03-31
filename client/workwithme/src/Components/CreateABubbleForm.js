@@ -221,24 +221,45 @@ function CreateABubbleForm(props) {
                     {" "}
                     Your bubble has {bubble.workstations} workstation(s) to offer{" "}
                   </p>
-                  <h1> Features </h1>
+                  <h2> Features: </h2>
                   <p>
-                    <span> Wifi: {bubble.wifi === true ? "Yes" : "/"}</span>
+                    <span> Wifi: {bubble.wifi === true ? <img
+                        src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
+                        width="25"
+                        height="30"
+                      /> : "-"} </span>
                     <span>
                       {" "}
-                      Pet Friendly: {bubble.petfriendly === true ? "Yes" : "/"}
-                    </span>
+                      Pet friendly: {bubble.petfriendly  === true ? <img
+                        src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
+                        width="25"
+                        height="30"
+                      /> : "-"} </span>
                     <span>
-                      Kitchen Access: {bubble.kitchen === true ? "Yes" : "/"}
-                    </span>
+                      Kitchen Access: {bubble.kitchen === true ? <img
+                        src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
+                        width="25"
+                        height="30"
+                      /> : "-"} </span>
                     <span>
-                      Quiet Space: {bubble.quietspace === true ? "Yes" : "/"}
-                    </span>
+                      Quiet Space: {bubble.quietspace  === true ? <img
+                        src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
+                        width="25"
+                        height="30"
+                      /> : "-"} </span>
                     <span>
-                      Wheelchair Access: {bubble.wheelchair === true ? "Yes" : "/"}
-                    </span>
-                    <span>Smoking Corner {bubble.smoking === true ? "Yes" : "/"}</span>
+                      Wheelchair Access: {bubble.wheelchair  === true ? <img
+                        src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
+                        width="25"
+                        height="30"
+                      /> : "-"} </span>
+                    <span>Smoking Corner {bubble.smoking  === true ? <img
+                        src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
+                        width="25"
+                        height="30"
+                      /> : "-"} </span>
                   </p>
+                  <a href="/join-bubble" type="button" class="btn btn-secondary btn-lg"> Check the map</a>
                 </>
               }
               handleClose={togglePopup}

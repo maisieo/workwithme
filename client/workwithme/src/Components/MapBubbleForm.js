@@ -16,7 +16,10 @@ function MapBubbleForm(props) {
 
   return (
     //   //HTML for the form
-    <form onSubmit={handleSubmit}>
+  
+    
+     <form onSubmit={handleSubmit}>
+         {/* <h2>Find a bubble</h2> */}
       <label for="exampleDataList" class="form-label">
         Location
       </label>

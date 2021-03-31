@@ -132,7 +132,7 @@ function APImap({ bubbles }) {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {markers.map(
+            {markers && (markers.map(
               ({ name, lat, lon, workstations }, idx) => (
                 <Marker
                   key={`marker-${idx}`}
@@ -149,12 +149,13 @@ function APImap({ bubbles }) {
                       <div className="m-2" style={popupHead}>
                         {name}'s bubble has {workstations} workstations free!{" "}
                       </div>
+                      <a href="/all-bubbles" type="button" class="btn btn-secondary btn-lg"> See list</a>
                     </div>
                   </Popup>
                 </Marker>
               )
               //change the popup to include data about the bubble
-            )}
+            ))}
           </MapContainer>
         )}
       </div>
