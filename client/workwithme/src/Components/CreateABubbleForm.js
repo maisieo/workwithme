@@ -6,13 +6,13 @@ function CreateABubbleForm(props) {
   const [firstname, setFirstname] = useState("");
   const [location, setLocation] = useState("");
   const [workstations, setWorkstations] = useState("");
-  const [wifi, setWifi] = useState(false);
-  const [petfriendly, setPetfriendly] = useState(false);
-  const [kitchen, setKitchen] = useState(false);
-  const [quietspace, setQuietspace] = useState(false);
-  const [wheelchair, setWheelchair] = useState(false);
-  const [smoking, setSmoking] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [wifi, setWifi] = useState(0);
+  const [petfriendly, setPetfriendly] = useState(0);
+  const [kitchen, setKitchen] = useState(0);
+  const [quietspace, setQuietspace] = useState(0);
+  const [wheelchair, setWheelchair] = useState(0);
+  const [smoking, setSmoking] = useState(0);
+  const [isOpen, setIsOpen] = useState(0);
   const [bubble, setBubble] = useState([{ firstname: "Julie", workstations: "" }]);
   
 
@@ -31,31 +31,35 @@ function CreateABubbleForm(props) {
         setWorkstations(value);
         break;
       case "wifi":
-        setWifi(checked);
+        setWifi(convert(checked));
         break;
       case "petfriendly":
-        setPetfriendly(checked);
+        setPetfriendly(convert(checked));
         break;
       case "kitchen":
-        setKitchen(checked);
+        setKitchen(convert(checked));
         break;
       case "quietspace":
-        setQuietspace(checked);
+        setQuietspace(convert(checked));
         break;
       case "wheelchair":
-        setWheelchair(checked);
+        setWheelchair(convert(checked));
         break;
       case "smoking":
-        setSmoking(checked);
+        setSmoking(convert(checked));
         break;
         }
   }
-  const handleWifi = () => setWifi(!wifi);
-  const handleKitchen = () => setKitchen(!kitchen);
-  const handlePet = () => setPetfriendly(!petfriendly);
-  const handleQuiet = () => setQuietspace(!quietspace);
-  const handleWheelchair = () => setWheelchair(!wheelchair);
-  const handleSmoking = () => setSmoking(!smoking);
+  const handleWifi = () => setWifi(convert(!wifi));
+  const handleKitchen = () => setKitchen(convert(!kitchen));
+  const handlePet = () => setPetfriendly(convert(!petfriendly));
+  const handleQuiet = () => setQuietspace(convert(!quietspace));
+  const handleWheelchair = () => setWheelchair(convert(!wheelchair));
+  const handleSmoking = () => setSmoking(convert(!smoking));
+
+  const convert = (feature) => {
+return (feature) ? 1 : 0;
+  }
 
   let newBubbleData = {
     firstname,
@@ -92,7 +96,7 @@ function CreateABubbleForm(props) {
     setWheelchair("");
     setSmoking("");
     setBubble(newBubbleData)
-    console.log("this is bubble", bubble)
+    // console.log("this is bubble", bubble)
     console.log(
       "After submit",
       firstname,
@@ -100,6 +104,8 @@ function CreateABubbleForm(props) {
       workstations,
       wifi,
       petfriendly,
+      kitchen,
+      quietspace,
       wheelchair,
       smoking
     );
@@ -215,13 +221,13 @@ function CreateABubbleForm(props) {
             <Popup
               content={
                 <>
-                  <h2>Your new bubble has been created</h2>
-                  <p>Welcome {bubble.firstname}</p>
+                  <h3>Your coworking bubble has been created</h3>
+                  <p>Welcome {bubble.firstname}!</p>
                   <p>
                     {" "}
                     Your bubble has {bubble.workstations} workstation(s) to offer{" "}
                   </p>
-                  <h2> Features: </h2>
+                  <h4> Features: </h4>
                   <p>
                     <span> Wifi: {bubble.wifi === true ? <img
                         src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-512.png"
