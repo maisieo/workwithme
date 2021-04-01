@@ -13,11 +13,11 @@ function APImap({ bubbles }) {
   const [markers, setMarkers] = useState();
   let allBubblesData = null;
   let coordinatesOfLocations = [];
-  let justArray = [];
+  let bubblesCoArray = [];
   let resultsArray = [];
-  let hopefullyFinal = null;
+  let bubblesData = null;
   let bubbleData = [];
-  let array3 = [];
+  let bubblesArray = [];
   let objs = [];
 
   useEffect(() => {
@@ -47,28 +47,18 @@ function APImap({ bubbles }) {
         console.log("Response ok");
         let data = await response.json();
         setDataLocations(data);
-        console.log(data);
         resultsArray = data.results;
-        console.log("THIS IS RESULTS ARRAY", resultsArray);
         resultsArray.forEach((location) =>
           coordinatesOfLocations.push([
             location.locations[0].latLng.lat,
             location.locations[0].latLng.lng,
           ])
         );
-        justArray.push(Object.values(coordinatesOfLocations));
-        console.log("coordinates of locations", coordinatesOfLocations);
-        hopefullyFinal = justArray[0];
-        console.log("hope", hopefullyFinal);
+        bubblesCoArray.push(Object.values(coordinatesOfLocations));
+        bubblesData = bubblesCoArray[0];
         bubbleData = bubbles.map((e) => [e.firstname, e.workstations]);
-        console.log("this is bubble data", bubbleData);
-        array3 = bubbleData.map((item, idx) => [
-          ...item,
-          ...hopefullyFinal[idx],
-        ]);
-        // for (let i=0; i <bubbleData.length; i++) {array3.push([...bubbleData[i],...hopefullyFinal[i]])}
-        console.log(array3, "this is array3");
-        objs = array3.map(function (x) {
+        bubblesArray = bubbleData.map((item, idx) => [...item, ...bubblesData[idx]]);
+        objs = bubblesArray.map(function (x) {
           return {
             name: x[0],
             workstations: x[1],
@@ -76,10 +66,8 @@ function APImap({ bubbles }) {
             lon: x[3],
           };
         });
-        console.log(objs);
-        setMarkers(objs);
 
-        console.log("These are markrs", markers);
+        setMarkers(objs);
       } else {
         console.log("Run into an error");
         setError(`Server error: ${response.status} ${response.statusText}`);
@@ -116,7 +104,7 @@ function APImap({ bubbles }) {
     <div>
       <MapBubbleForm onSubmit={(location) => getData(location)} />
       <div>
-        {hopefullyFinal}
+        {bubblesData}
         {data && (
           <MapContainer
             center={[

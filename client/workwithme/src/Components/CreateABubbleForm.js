@@ -132,6 +132,7 @@ return (feature) ? 1 : 0;
             id="exampleInputEmail1" aria-describedby="emailHelp"
             value={firstname}
             onChange={handleChange}
+            autocomplete="off"
           />
         </label>
         </div>
@@ -146,6 +147,7 @@ return (feature) ? 1 : 0;
             id="exampleInputEmail1" aria-describedby="emailHelp"
             value={location}
             onChange={handleChange}
+            autocomplete="off"
           />
         </label>
         </div>

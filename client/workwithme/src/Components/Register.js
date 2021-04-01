@@ -49,10 +49,7 @@ function Register(props) {
                   value={username}
                   onChange={handleChange}
                 ></input>
-                <small id="emailHelp" class="form-text text-muted">
-                  We'll never share your email with anyone else.
-                </small>
-              </div>
+                          </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input

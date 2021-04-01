@@ -15,7 +15,6 @@ function MapBubbleForm(props) {
   };
 
   return (
-    //   //HTML for the form
   
     <div className="findBubble">
      <form onSubmit={handleSubmit}>
@@ -32,6 +31,7 @@ function MapBubbleForm(props) {
         name="location"
         value={location}
         onChange={handleChange}
+        autocomplete="off"
       />
       <datalist id="datalistOptions">
         <option value="Barcelona" />
