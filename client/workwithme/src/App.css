@@ -10,6 +10,18 @@
   box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 20%);
 }
 
+/*This gets rid of that ugly default scrollbar
+but it keeps it scrollable*/
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; 
+}
+
+/*Navbar to allow some styling and make equal spacing*/
+.navbar {
+  height: 8vh;
+}
+
 #myBody {
   /* background: url("./Components/background-image.jpg"); center center/cover no-repeat; */
   /* height: 100vh;
@@ -119,6 +131,8 @@ h2 {
   text-shadow: 3px 3px 3px black;
 }
 
+
+
 .CreateABubbleForm {
   background-color: #243441;
   height: 80%;
@@ -141,8 +155,11 @@ h2 {
   text-shadow: 3px 3px 3px black;
 }
 
+/*This is for location input for JoinBubble*/
 .findBubble {
   background-color: #243441  !important;
+  height: 15vh;
+  opacity: 0.9;
   /* height: 80%;
   margin-top: 3%;
   margin-bottom: 10%;
@@ -150,4 +167,29 @@ h2 {
   margin-left: 8%;
   opacity: 0.96;
   text-shadow: 3px 3px 3px black; */
+}
+
+/*The paragraph in About.js */
+.about-span {
+  margin-top: 1%;
+}
+
+/*These are in About.js, image cards*/
+.about-image-cards {
+  margin-top: 6%;
+  display: flex;
+  margin-left: 14%;
+  margin-bottom: 10%;
+}
+
+
+p.card-text {
+  color: rgb(33, 46, 48);
+  text-shadow: 3px 3px 3px rgb(216, 225, 233);
+}
+
+.card1 {
+  margin-top: 20px;
+width: 30vw;
+ height: 40vh;
 }

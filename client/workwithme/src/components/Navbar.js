@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import * as ReactBootstrap from "react-bootstrap";
 
@@ -23,12 +23,14 @@ function Navbar1() {
             All bubbles
           </ReactBootstrap.Nav.Link>
         </ReactBootstrap.Nav>
-        <ReactBootstrap.Button variant="outline-success" href="login">
-          Login
-        </ReactBootstrap.Button>
-        <ReactBootstrap.Button variant="outline-info" href="register">
-          Register
-        </ReactBootstrap.Button>
+        <div className="user-login-reg">
+            <ReactBootstrap.Button variant="outline-success" href="login" className="login">
+              Login
+            </ReactBootstrap.Button>
+            <ReactBootstrap.Button variant="outline-info" href="register" className= "register">
+              Register
+            </ReactBootstrap.Button>
+        </div>
       </ReactBootstrap.Navbar.Collapse>
     </ReactBootstrap.Navbar>
   );

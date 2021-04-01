@@ -1,4 +1,4 @@
-.Navbar ul {
+/* .Navbar ul {
   list-style-type: none;
 }
 .navLink {
@@ -22,3 +22,14 @@
   nav a {
     padding: 5px;
   }
+
+  /*user login and registration buttons*/
+  .user-login-reg {
+    /* background: red; */
+    width: 60vh;
+  }
+
+  .register {
+    margin-right: -60%;
+    margin-left: 6%;
+  } 
