@@ -12,7 +12,7 @@ function CreateABubbleForm(props) {
   const [quietspace, setQuietspace] = useState(0);
   const [wheelchair, setWheelchair] = useState(0);
   const [smoking, setSmoking] = useState(0);
-  const [isOpen, setIsOpen] = useState(0);
+  const [isOpen, setIsOpen] = useState("");
   const [bubble, setBubble] = useState([{ firstname: "Julie", workstations: "" }]);
   
 
@@ -121,29 +121,37 @@ return (feature) ? 1 : 0;
       <h2 id="CreateABubble"> Create a bubble</h2>
       
       <form onSubmit={handleSubmit}>
-        <label>
+      <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">
           Firstname&nbsp;
           <input
             id="firstname"
             type="textarea"
             name="firstname"
+            class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp"
             value={firstname}
             onChange={handleChange}
           />
         </label>
+        </div>
+        <div class="mb-3">
         <label>
           Location&nbsp;
           <input
             id="location"
             type="textarea"
             name="location"
+            class="form-control"
+            id="exampleInputEmail1" aria-describedby="emailHelp"
             value={location}
             onChange={handleChange}
           />
         </label>
+        </div>
         <label>
           How many workstations can you offer?{" "}
-          <select
+          <select class="form-select" aria-label="Default select example"
             name="workstations"
             value={workstations}
             onChange={handleChange}
@@ -156,7 +164,43 @@ return (feature) ? 1 : 0;
             <option id="four">4</option>
           </select>
         </label>
-        Wifi?{" "}
+        <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onClick={handleWifi} value={wifi}/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Wifi?
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onClick={handlePet} value={petfriendly}/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Pet friendly?
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onClick={handleKitchen} value={kitchen}/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Kitchen?
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onClick={handleQuiet} value={quietspace}/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Quiet space?
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onClick={handleWheelchair} value={wheelchair}/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Wheelchair friendly?
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onClick={handleSmoking} value={smoking}/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Smoking area?
+  </label>
+</div>
+        {/* Wifi?{" "}
         <span>
           {" "}
           Wifi
@@ -210,7 +254,7 @@ return (feature) ? 1 : 0;
             onChange={handleChange}
             onClick={handleSmoking}
           ></input>
-        </span>
+        </span> */}
         <button
           id="buttonCreateBubble"
           type="submit"

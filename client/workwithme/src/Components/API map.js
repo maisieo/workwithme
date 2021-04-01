@@ -111,10 +111,10 @@ function APImap({ bubbles }) {
       setError(`Network error: ${err.message}`);
     }
   };
- 
+
   return (
     <div>
-            <MapBubbleForm onSubmit={(location) => getData(location)} />
+      <MapBubbleForm onSubmit={(location) => getData(location)} />
       <div>
         {hopefullyFinal}
         {data && (
@@ -149,14 +149,6 @@ function APImap({ bubbles }) {
                       <div className="m-2" style={popupHead}>
                         {name}'s bubble has {workstations} workstations free!{" "}
                       </div>
-                      <a
-                        href="/all-bubbles"
-                        type="button"
-                        class="btn btn-light btn-sm"
-                      >
-                        {" "}
-                        See list
-                      </a>
                     </div>
                   </Popup>
                 </Marker>
@@ -165,7 +157,6 @@ function APImap({ bubbles }) {
         )}
       </div>
     </div>
-    
   );
 }
 
