@@ -19,8 +19,8 @@ function Navbar1() {
           <ReactBootstrap.Nav.Link href="join-bubble">
             Find a bubble
           </ReactBootstrap.Nav.Link>
-          <ReactBootstrap.Nav.Link href="all-bubbles">
-            All bubbles
+          <ReactBootstrap.Nav.Link href="all-bubbles" >
+            <strong>Admin view</strong>
           </ReactBootstrap.Nav.Link>
         </ReactBootstrap.Nav>
         <div className="user-login-reg">
@@ -38,14 +38,5 @@ function Navbar1() {
 
 export default Navbar1;
 {
-  /* <nav className="Navbar">
-<ul>
-<div>
-</div>
-<li><NavLink to="/" exact activeClassName="selected" className="navLink" >About</NavLink></li>
-    <li><NavLink to="/new-bubble" activeClassName="selected" className="navLink">Create a bubble</NavLink></li>
-    <li><NavLink to="/join-bubble" activeClassName="selected" className="navLink">Join an existing bubble</NavLink></li>
-    <li><NavLink to="/login" activeClassName="selected" className="navLink">Login</NavLink></li>
-</ul>
-</nav> */
+
 }

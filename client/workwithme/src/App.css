@@ -17,10 +17,6 @@ but it keeps it scrollable*/
   background: transparent; 
 }
 
-/*Navbar to allow some styling and make equal spacing*/
-.navbar {
-  height: 8vh;
-}
 
 #myBody {
   /* background: url("./Components/background-image.jpg"); center center/cover no-repeat; */
@@ -174,22 +170,8 @@ h2 {
   margin-top: 1%;
 }
 
-/*These are in About.js, image cards*/
-.about-image-cards {
-  margin-top: 6%;
-  display: flex;
-  margin-left: 14%;
-  margin-bottom: 10%;
-}
-
-
-p.card-text {
-  color: rgb(33, 46, 48);
-  text-shadow: 3px 3px 3px rgb(216, 225, 233);
-}
-
 .card1 {
   margin-top: 20px;
-  width: 22vw;
+  width: 17vw;
   height: 25vh;
 }
