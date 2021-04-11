@@ -1,15 +1,17 @@
 import React from 'react';
-import MapBubbles from "./MapBubbles"
-import MapBubbleForm from "./MapBubbleForm";
 
-
-function MapWithNewBubble() {
+const MapWithNewBubble = props => {
     return (
-        <div className="NewBubble">
-           Here is your new bubble
-            <MapBubbles />
+      <div className="popup-box">
+        <div className="box">
+          <span className="close-icon" onClick={props.handleClose}>x</span>
+          {props.content}
         </div>
+      </div>
     );
-}
+  };
+   
+  export default MapWithNewBubble;
 
-export default MapWithNewBubble;
+
+

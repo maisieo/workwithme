@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import MapBubbles from "./MapBubbles"
-import MapBubbleForm from "./MapBubbleForm"
+import React, { useState } from "react";
 
+import MapBubbleForm from "./MapBubbleForm";
+import { MapContainer, Map, Marker, Popup, TileLayer } from "react-leaflet";
+import APImap from "./API map";
 // have a state here that gets updates with the mapbubbleform
-// let coordinates = useState([52.517037, 13.38886]);
 
-function JoinBubble(props) {
-    return (
-        <div className="NewBubble">
-            Join an existing Bubble
-            <MapBubbleForm /*onSubmit={coordinates => getCoordinates(coordinates)}/*//>
-            <MapBubbles /*coordinates={coordinates}/*//>
-        </div>
-    );
+function JoinBubble({ bubbles }) {
+  const [data, setData] = useState("");
+
+  return (
+    <div className="NewBubble">
+     
+          <APImap data={data} bubbles={bubbles} />
+    </div>
+  );
 }
 
 export default JoinBubble;
