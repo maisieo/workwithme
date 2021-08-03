@@ -4,9 +4,9 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var authRouter = require("./routes/auth");
+// var authRouter = require("./routes/auth");
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+// var usersRouter = require("./routes/users");
 var bubblesRouter = require("./routes/bubbles");
 
 var app = express();
@@ -15,20 +15,20 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "public")));
 app.get("/", function (req, res, next) {
   res.send("Access the API at path /api");
 });
-app.use("/", authRouter);
+// app.use("/", authRouter);
 app.use("/", indexRouter);
 // app.use("/users", usersRouter);
 app.use("/bubbles", bubblesRouter);
 // app.get("/bubbles", bubblesRouter);
 
 // Anything that doesn't match the above, send back index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
+// });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
