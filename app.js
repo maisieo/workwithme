@@ -26,9 +26,9 @@ app.use("/bubbles", bubblesRouter);
 // app.get("/bubbles", bubblesRouter);
 
 // Anything that doesn't match the above, send back index.html
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
