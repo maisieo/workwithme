@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 // var authRouter = require("./routes/auth");
-var indexRouter = require("./routes/index");
+var indexRouter = require("./routes/bubbles");
 // var usersRouter = require("./routes/users");
 var bubblesRouter = require("./routes/bubbles");
 
@@ -20,7 +20,7 @@ app.get("/", function (req, res, next) {
   res.send("Access the API at path /api");
 });
 // app.use("/", authRouter);
-app.use("/index", indexRouter);
+app.use("/", indexRouter);
 // app.use("/users", usersRouter);
 app.use("/bubbles", bubblesRouter);
 // app.get("/bubbles", bubblesRouter);
