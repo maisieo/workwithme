@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "migrate": "node model/database.js"
+    "migrate": "node model/database.js",
+    "client": "cd client && yarn start",
+    "root": "nodemon app.js",
+    "dev": "concurrently --kill-others-on-fail  \"yarn run client\"",
+    "heroku-postbuild": "cd client && yarn  && yarn run build"
   },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.12.1",
