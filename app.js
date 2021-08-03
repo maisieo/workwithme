@@ -15,19 +15,19 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "client/public")));
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.get("/", function (req, res, next) {
   res.send("Access the API at path /api");
 });
 // app.use("/", authRouter);
-app.use("/", indexRouter);
+app.use("/index", indexRouter);
 // app.use("/users", usersRouter);
 app.use("/bubbles", bubblesRouter);
 // app.get("/bubbles", bubblesRouter);
 
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/public/index.html"));
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
 // catch 404 and forward to error handler
