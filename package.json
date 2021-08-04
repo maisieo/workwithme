@@ -1,13 +1,14 @@
 {
   "name": "workwithme",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "react-scripts start",
     "migrate": "node model/database.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  
 
   
   },
